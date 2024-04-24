@@ -12,7 +12,8 @@ public class EtudiantServiceImpl2 implements EtudiantService{
     }
 
     @Override
-    public EtudiantResponseDto findById(Integer id) {
+    public EtudiantResponseDto findById(Integer CodeApogee) {
+
         return null;
     }
 
@@ -22,7 +23,7 @@ public class EtudiantServiceImpl2 implements EtudiantService{
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Integer codeApogee) {
 
     }
 

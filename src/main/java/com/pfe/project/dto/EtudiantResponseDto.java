@@ -12,7 +12,7 @@ public class EtudiantResponseDto {
     private String etprenom;
 
     private String adressEmail;
-    private  int codeApogee;
+    private  Integer codeApogee;
     private  int telephone;
     private int motDePasse;
 
