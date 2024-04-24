@@ -15,6 +15,8 @@ import java.io.Serializable;
 public class Professeur implements Serializable {
 
    @Id
+   @GeneratedValue(strategy= GenerationType.IDENTITY)
+   private Integer identifier;
    @Column(nullable = false)
    private String nom;
    @Column(nullable = false)
@@ -25,6 +27,11 @@ public class Professeur implements Serializable {
    private String password;
    @Column(nullable = false)
    private String telephone;
+
+   public void SetIdentifier(Integer identifier){
+      this.identifier=identifier;
+   }
+
 
    @ManyToOne
    private Departement departement;
