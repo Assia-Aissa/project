@@ -1,9 +1,7 @@
 
 package com.pfe.project.modeles;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,5 +25,12 @@ public class Projet implements Serializable {
    @Column(nullable = false)
    private boolean cacher;
 
+   //many project created by the encadrant
+   @ManyToOne
+   private Encadrant encadrant;
+
+   @OneToOne(mappedBy="projet")
+   @JoinColumn(name="Projet")
+   private Groupe groupe;
 
 }

@@ -1,9 +1,7 @@
 
 package com.pfe.project.modeles;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +18,13 @@ public class Filiere implements Serializable {
    @Column(nullable = false)
    private String fnom;
 
+
+   @ManyToOne
+   private Departement departement;
+
+   @OneToMany
+
+   private List<Etudiant> etudiants;
 
 
 }

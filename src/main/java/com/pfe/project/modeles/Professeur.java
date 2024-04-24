@@ -1,8 +1,6 @@
 package com.pfe.project.modeles;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +11,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Professeur implements Serializable {
 
    @Id
@@ -23,8 +22,10 @@ public class Professeur implements Serializable {
    @Column(nullable = false)
    private String email;
    @Column(nullable = false)
-   private int password;
+   private String password;
    @Column(nullable = false)
-   private int telephone;
+   private String telephone;
 
+   @ManyToOne
+   private Departement departement;
 }

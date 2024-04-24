@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -22,8 +23,14 @@ public class Groupe implements Serializable {
    @Column(nullable = false)
    private String membres;
 
+   @OneToMany(mappedBy="groupe")
+   @JoinColumn(name="Members")
+   private List<Etudiant> etudiants;
 
+   @OneToOne
+   private Projet projet;
 
-
+   @ManyToOne
+   private ResponsablePFE responsablePFE ;
 
 }

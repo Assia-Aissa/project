@@ -1,13 +1,10 @@
 package com.pfe.project.modeles;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
+import java.util.List;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
@@ -25,4 +22,7 @@ public class Administrateur implements Serializable {
    @Column(nullable = false)
    private int password;
 
+   @OneToMany(mappedBy = "administrateur")
+   @JoinColumn(name="departement")
+   private List<Departement> departements;
 }
