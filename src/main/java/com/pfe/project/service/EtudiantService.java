@@ -6,12 +6,13 @@ import com.pfe.project.dto.EtudiantResponseDto;
 public interface EtudiantService {
    EtudiantResponseDto save(EtudiantRequestDto etudiantRequestDto);
 
-   EtudiantResponseDto findById(Integer id);
+
+   EtudiantResponseDto findById(Integer codeApogee);
 
    EtudiantResponseDto findByNom(String etnom);
 
-   void delete(Integer id);
+   void delete(Integer codeApogee);
 
-   EtudiantResponseDto update(EtudiantRequestDto etudiantRequestDto, Integer id) ;
+   EtudiantResponseDto update(EtudiantRequestDto etudiantRequestDto, Integer codeApogee) ;
 
 }

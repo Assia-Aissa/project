@@ -6,13 +6,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EtudiantRequestDto {
-    private Integer id;
+
     private String etnom;
     private String etprenom;
 
     private String adressEmail;
-    private  int codeApogee;
+    private  Integer codeApogee;
     private  int telephone;
-    private int motDePasse;
+    private String motDePasse;
 
 }

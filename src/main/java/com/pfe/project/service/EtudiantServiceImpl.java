@@ -30,8 +30,8 @@ public class EtudiantServiceImpl implements EtudiantService {
     }
 
     @Override
-    public EtudiantResponseDto findById(Integer id) {
-        Etudiant etudiant =etudiantDao.findById(id).orElseThrow(()-> new RuntimeException("Etudiant not found"));
+    public EtudiantResponseDto findById(Integer CodeApogee) {
+        Etudiant etudiant =etudiantDao.findById(CodeApogee).orElseThrow(()-> new RuntimeException("Etudiant not found"));
         return modelMapper.map(etudiant, EtudiantResponseDto.class);
     }
 
