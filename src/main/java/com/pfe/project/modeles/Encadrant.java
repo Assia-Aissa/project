@@ -16,14 +16,13 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Encadrant extends Professeur implements Serializable {
 
    private boolean archive;
 
 
-   @OneToMany(mappedBy = "encadrant")
-   @JoinColumn(name="projet_titre")
+   @OneToMany(mappedBy = "encadrant",cascade = CascadeType.ALL)
    private List<Projet> projets;
 
 

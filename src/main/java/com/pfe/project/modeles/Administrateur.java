@@ -22,7 +22,8 @@ public class Administrateur implements Serializable {
    @Column(nullable = false)
    private int password;
 
-   @OneToMany(mappedBy = "administrateur")
-   @JoinColumn(name="departement")
+
+   @OneToMany(mappedBy = "administrateur", cascade = CascadeType.ALL)
    private List<Departement> departements;
+
 }

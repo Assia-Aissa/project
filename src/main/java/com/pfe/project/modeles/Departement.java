@@ -18,16 +18,22 @@ public class Departement implements Serializable {
    @Column(nullable = false)
    private String dnom;
 
-   @OneToMany(mappedBy = "departement")
-   @JoinColumn(name="professeur_nom")
+   @OneToMany(mappedBy = "departement",cascade = CascadeType.ALL)
+
    private List<Professeur> professeurs;
 
+
+   // In your Departement entity
    @ManyToOne
+   @JoinColumn(name = "administrateur_id")
    private Administrateur administrateur;
 
-   @OneToMany(mappedBy="departement")
-   @JoinColumn(name="nom_Filiere")
+   @OneToMany(mappedBy="departement", cascade = CascadeType.ALL)
    private List<Filiere> filieres;
+
+
+
+
 
 
 

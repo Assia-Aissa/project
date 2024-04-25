@@ -5,6 +5,7 @@ import com.pfe.project.dto.ProfesseurRequestDto;
 import com.pfe.project.dto.ProfesseurResponseDto;
 import com.pfe.project.service.ProfesseurService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping()
+@RequestMapping(path="/prof")
 
 public class professeurController {
+    @Autowired
     private ProfesseurService professeurService;
     public professeurController(ProfesseurService professeurService){
         this.professeurService=professeurService;
@@ -22,11 +24,14 @@ public class professeurController {
 
     @GetMapping("professeur/info")
     public ResponseEntity<List<ProfesseurResponseDto>> getProfesseur(){
+
         return new ResponseEntity<>(professeurService.findAll(), HttpStatus.OK);
     }
 
-    @PostMapping("saveProfesseur")
+    @PostMapping("/save")
     public ResponseEntity<ProfesseurResponseDto> save(@Valid @RequestBody()ProfesseurRequestDto professeurRequestDto){
+        System.out.println("just see if there is any error or not :)");
+        System.out.println("just see if there is any error or not :)");
         ProfesseurResponseDto professeurResponseDto=professeurService.save(professeurRequestDto);
         return new ResponseEntity<>(professeurResponseDto,HttpStatus.CREATED);
     }

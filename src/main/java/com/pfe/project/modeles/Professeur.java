@@ -11,7 +11,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Professeur implements Serializable {
 
    @Id
@@ -34,5 +34,6 @@ public class Professeur implements Serializable {
 
 
    @ManyToOne
+   @JoinColumn(name="professeur_nom")
    private Departement departement;
 }

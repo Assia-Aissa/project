@@ -23,14 +23,14 @@ public class Groupe implements Serializable {
    @Column(nullable = false)
    private String membres;
 
-   @OneToMany(mappedBy="groupe")
-   @JoinColumn(name="Members")
+   @OneToMany(mappedBy="groupe", cascade = CascadeType.ALL)
    private List<Etudiant> etudiants;
 
    @OneToOne
    private Projet projet;
 
    @ManyToOne
+   @JoinColumn(name = "Groupe")
    private ResponsablePFE responsablePFE ;
 
 }

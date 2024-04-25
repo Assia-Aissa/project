@@ -1,10 +1,7 @@
 
 package com.pfe.project.modeles;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,5 +32,6 @@ public class Etudiant implements Serializable {
    private Filiere filiere;
 
    @ManyToOne
+   @JoinColumn(name="Members")
    private Groupe groupe;
 }

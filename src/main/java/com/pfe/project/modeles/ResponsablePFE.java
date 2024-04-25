@@ -1,6 +1,7 @@
 package com.pfe.project.modeles;
 
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -21,7 +22,7 @@ public class ResponsablePFE extends Encadrant implements Serializable {
    @Column(nullable = false)
    private boolean responsable;
 
-   @OneToMany(mappedBy = "responsablePFE")
+   @OneToMany(mappedBy = "responsablePFE", cascade = CascadeType.ALL)
    private List<Groupe> groupes;
 
 }

@@ -18,9 +18,10 @@ public class Filiere implements Serializable {
    @Column(nullable = false)
    private String fnom;
 
-
    @ManyToOne
+   @JoinColumn(name = "nom_Filiere")
    private Departement departement;
+
 
    @OneToMany
 

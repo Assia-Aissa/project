@@ -29,8 +29,8 @@ public class Projet implements Serializable {
    @ManyToOne
    private Encadrant encadrant;
 
-   @OneToOne(mappedBy="projet")
-   @JoinColumn(name="Projet")
+   @OneToOne
+   @JoinColumn(name="Projet_titre")
    private Groupe groupe;
 
 }
