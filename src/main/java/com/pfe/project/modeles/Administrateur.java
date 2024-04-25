@@ -15,7 +15,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class Administrateur implements Serializable {
    @Id
-   @GeneratedValue
+   @GeneratedValue(strategy= GenerationType.IDENTITY)
    private int id;
    @Column(nullable = false)
    private String email;

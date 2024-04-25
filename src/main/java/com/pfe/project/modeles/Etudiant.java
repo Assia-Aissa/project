@@ -27,9 +27,9 @@ public class Etudiant implements Serializable {
    @Column(nullable = false)
    private  int codeApogee;
    @Column(nullable = false)
-   private  int telephone;
+   private  String telephone;
    @Column(nullable = false)
-   private int motDePasse;
+   private String motDePasse;
 
    @ManyToOne
    private Filiere filiere;
