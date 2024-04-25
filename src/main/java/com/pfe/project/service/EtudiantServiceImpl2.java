@@ -4,6 +4,8 @@ import com.pfe.project.dto.EtudiantRequestDto;
 import com.pfe.project.dto.EtudiantResponseDto;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service("impl2")
 public class EtudiantServiceImpl2 implements EtudiantService{
     @Override
@@ -28,7 +30,12 @@ public class EtudiantServiceImpl2 implements EtudiantService{
     }
 
     @Override
-    public EtudiantResponseDto update(EtudiantRequestDto etudiantRequestDto, Integer id) {
+    public EtudiantResponseDto update(EtudiantRequestDto etudiantRequestDto, Integer codeApogee) {
         return null;
+    }
+
+    @Override
+    public List<EtudiantResponseDto> findAll() {
+        return List.of();
     }
 }
