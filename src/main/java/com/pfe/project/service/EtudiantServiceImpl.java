@@ -42,8 +42,8 @@ public class EtudiantServiceImpl implements EtudiantService {
     }
 
     @Override
-    public EtudiantResponseDto findByNom(String etnom) {
-        Etudiant etudiant =etudiantDao.findByNom(etnom);
+    public EtudiantResponseDto findByNom(String nom) {
+        Etudiant etudiant =etudiantDao.findBynom(nom);
         return modelMapper.map(etudiant, EtudiantResponseDto.class);
     }
 

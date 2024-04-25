@@ -9,14 +9,15 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 @Entity
+@Table(name="etudiants")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Etudiant implements Serializable {
 
    @Id
-   @Column(nullable = false)
-   private String etnom;
+   @Column(name = "etnom")
+   private String nom;
    @Column(nullable = false)
    private String etprenom;
    @Column(nullable = false)
@@ -27,6 +28,7 @@ public class Etudiant implements Serializable {
    private  String telephone;
    @Column(nullable = false)
    private String motDePasse;
+
 
    @ManyToOne
    private Filiere filiere;

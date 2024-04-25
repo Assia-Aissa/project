@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class EtudiantResponseDto {
 
-    private String etnom;
+    private String nom;
     private String etprenom;
 
     private String adressEmail;

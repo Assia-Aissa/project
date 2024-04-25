@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("etudiants")
+@RequestMapping("/etudiants")
 public class EtudiantController {
 
      private EtudiantService etudiantService;
@@ -21,15 +21,15 @@ public class EtudiantController {
         this.etudiantService = etudiantService;
     }
 
-    @GetMapping("")
+    @GetMapping("/etudiant")
     public ResponseEntity<List<EtudiantResponseDto>>getEtudiant() {
 
         return new ResponseEntity<>(etudiantService.findAll(), HttpStatus.OK);
     }
 
 
-    @PostMapping("")
-    public ResponseEntity<EtudiantResponseDto> save(@Valid @RequestBody() EtudiantRequestDto etudiantRequestDto){
+    @PostMapping("/add")
+    public ResponseEntity<EtudiantResponseDto> save(@Valid @RequestBody EtudiantRequestDto etudiantRequestDto){
        EtudiantResponseDto etudiantResponseDto = etudiantService.save(etudiantRequestDto);
        return new ResponseEntity<>(etudiantResponseDto,HttpStatus.CREATED);
     }
@@ -42,8 +42,8 @@ public class EtudiantController {
     }
 
     @GetMapping("/nom/{etnom}")
-    public ResponseEntity<EtudiantResponseDto> findByNom(@PathVariable("etnom") String etnom) {
-        EtudiantResponseDto etudiantResponseDto =etudiantService.findByNom(etnom);
+    public ResponseEntity<EtudiantResponseDto> findByNom(@PathVariable("nom") String nom) {
+        EtudiantResponseDto etudiantResponseDto =etudiantService.findByNom(nom);
         return ResponseEntity.ok(etudiantResponseDto);
     }
 

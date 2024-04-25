@@ -12,7 +12,7 @@ public interface EtudiantService {
 
    EtudiantResponseDto findById(Integer codeApogee);
 
-   EtudiantResponseDto findByNom(String etnom);
+   EtudiantResponseDto findByNom(String nom);
 
    void delete(Integer codeApogee);
 
