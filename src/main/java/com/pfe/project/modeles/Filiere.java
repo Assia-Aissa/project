@@ -15,8 +15,8 @@ import java.util.*;
 public class Filiere implements Serializable {
 
    @Id
-   @Column(nullable = false)
-   private String fnom;
+   @Column(name="F_nom",nullable = false)
+   private String nom;
 
    @ManyToOne
    @JoinColumn(name = "nom_Filiere")
