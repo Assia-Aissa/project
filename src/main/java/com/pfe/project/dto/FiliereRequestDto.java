@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 public class FiliereRequestDto {
 
     @NotNull(message = "Filiere!!")
-    private String fnom;
+    private String nom;
 }

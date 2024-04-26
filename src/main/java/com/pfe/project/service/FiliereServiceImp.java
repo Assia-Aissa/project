@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,12 +18,19 @@ import java.util.stream.Collectors;
 
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @Service
 public class FiliereServiceImp implements FiliereService {
+
     private FiliereDao filiereDao;
     private ModelMapper modelMapper;
+
+    @Autowired
+    public FiliereServiceImp(FiliereDao filiereDao, ModelMapper modelMapper) {
+        this.filiereDao = filiereDao;
+        this.modelMapper = modelMapper;
+    }
+
 
 
 

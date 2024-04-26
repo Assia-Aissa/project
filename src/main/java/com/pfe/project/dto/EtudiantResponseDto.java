@@ -14,6 +14,6 @@ public class EtudiantResponseDto {
     private String adressEmail;
     private  Integer codeApogee;
     private  int telephone;
-    private int motDePasse;
+    private int motdePasse;
 
 }

@@ -33,7 +33,7 @@ public class EtudiantRequestDto {
     private  String telephone;
 
     @NotNull(message = "le mot de passe est obligatoire !!")
-    private String motDePasse;
+    private String motdePasse;
 
 
 

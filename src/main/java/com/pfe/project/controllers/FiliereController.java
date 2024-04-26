@@ -31,23 +31,23 @@ public class FiliereController {
         return new ResponseEntity<>(filiereResponseDto,HttpStatus.CREATED);
     }
     @GetMapping("/filiere/{nom}")
-    public ResponseEntity<FiliereResponseDto> findByFnom(@PathVariable("fnom") String fnom){
+    public ResponseEntity<FiliereResponseDto> findByFnom(@PathVariable("nom") String nom){
         FiliereResponseDto filiereResponseDto;
-        filiereResponseDto = filiereService.findByNom(fnom);
+        filiereResponseDto = filiereService.findByNom(nom);
         return ResponseEntity.ok(filiereResponseDto);
     }
 
-    @DeleteMapping("/NoFiliere/{fnom}")
-    public ResponseEntity<?> delete (@PathVariable() String fnom){
-        filiereService.delete(fnom);
+    @DeleteMapping("/NoFiliere/{nom}")
+    public ResponseEntity<?> delete (@PathVariable() String nom){
+        filiereService.delete(nom);
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping("/filiere/{fnom}")
-   public ResponseEntity<FiliereResponseDto> update(@Valid @RequestBody FiliereRequestDto filiereRequestDto,@PathVariable  String fnom)
+   public ResponseEntity<FiliereResponseDto> update(@Valid @RequestBody FiliereRequestDto filiereRequestDto,@PathVariable  String nom)
             throws ChangeSetPersister.NotFoundException{
         {
-            FiliereResponseDto filiereResponseDto =filiereService.update(filiereRequestDto,fnom);
+            FiliereResponseDto filiereResponseDto =filiereService.update(filiereRequestDto,nom);
             return ResponseEntity.accepted().body(filiereResponseDto);
         }
 

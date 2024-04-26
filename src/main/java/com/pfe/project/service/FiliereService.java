@@ -12,7 +12,7 @@ public interface FiliereService {
 
     FiliereResponseDto findByNom(String nom);
 
-    void delete(String fnom);
+    void delete(String nom);
     FiliereResponseDto update(FiliereRequestDto filiereRequestDto,String fnom);
 
     List<FiliereResponseDto> findAll();

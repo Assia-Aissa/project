@@ -8,5 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FiliereResponseDto {
-    private String fnom;
+
+    private String nom;
 }
