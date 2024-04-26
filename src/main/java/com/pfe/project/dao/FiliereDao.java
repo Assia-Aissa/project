@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface FiliereDao extends JpaRepository<Filiere,String> {
 
 
-    Filiere findByNom(String fnom);
+    Filiere findByNom(String nom);
 
-    void deleteByNom(String fnom);
+    void deleteByNom(String nom);
 
 }

@@ -31,7 +31,7 @@ public class FiliereController {
         return new ResponseEntity<>(filiereResponseDto,HttpStatus.CREATED);
     }
     @GetMapping("/filiere/{nom}")
-    public ResponseEntity<FiliereResponseDto> findByNom(@PathVariable("fnom") String fnom){
+    public ResponseEntity<FiliereResponseDto> findByFnom(@PathVariable("fnom") String fnom){
         FiliereResponseDto filiereResponseDto;
         filiereResponseDto = filiereService.findByNom(fnom);
         return ResponseEntity.ok(filiereResponseDto);

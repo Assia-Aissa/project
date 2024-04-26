@@ -10,7 +10,7 @@ public interface FiliereService {
     FiliereResponseDto save (FiliereRequestDto filiereRequestDto);
 
 
-    FiliereResponseDto findByNom(String fnom);
+    FiliereResponseDto findByNom(String nom);
 
     void delete(String fnom);
     FiliereResponseDto update(FiliereRequestDto filiereRequestDto,String fnom);
