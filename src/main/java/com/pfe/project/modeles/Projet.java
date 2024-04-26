@@ -12,12 +12,12 @@ import java.util.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Table(name = "Projets")
 public class Projet implements Serializable {
 
    @Id
-   @Column(nullable = false)
-   private String titre;
+   @Column(nullable = false,name = "titre")
+   private String nom;
    @Column(nullable = false)
    private String objectif;
    @Column(nullable = false)
@@ -30,7 +30,7 @@ public class Projet implements Serializable {
    private Encadrant encadrant;
 
    @OneToOne
-   @JoinColumn(name="Projet_titre")
+   @JoinColumn(name="groupe")
    private Groupe groupe;
 
 }

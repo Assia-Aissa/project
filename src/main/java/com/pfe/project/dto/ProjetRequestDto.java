@@ -16,7 +16,7 @@ public class ProjetRequestDto {
 
 
     @NotNull(message = "le titre est obligatoire")
-    @Size(min = 3, max = 25, message = "la nombre de character doit compris entre 3 et 25")
+    @Size( max = 25, message = "le nombre de character doit < 25")
     private String titre;
 
      @NotNull(message = " objective est obligatoire")

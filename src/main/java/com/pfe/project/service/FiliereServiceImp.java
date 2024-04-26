@@ -19,17 +19,14 @@ import java.util.stream.Collectors;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Service
 public class FiliereServiceImp implements FiliereService {
 
+    @Autowired
     private FiliereDao filiereDao;
     private ModelMapper modelMapper;
 
-    @Autowired
-    public FiliereServiceImp(FiliereDao filiereDao, ModelMapper modelMapper) {
-        this.filiereDao = filiereDao;
-        this.modelMapper = modelMapper;
-    }
 
 
 

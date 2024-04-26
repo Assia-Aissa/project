@@ -8,8 +8,10 @@ import com.pfe.project.dto.ProjetResponseDto;
 import com.pfe.project.modeles.Projet;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -20,10 +22,11 @@ import java.util.stream.Collectors;
 
 @Data
 @AllArgsConstructor
-@Service
+@NoArgsConstructor
+@Service()
 
 public class ProjetServiceImpl implements ProjetService{
-
+    @Autowired
     private ProjetDao projetDao;
     private ModelMapper modelMapper;
 
@@ -38,17 +41,17 @@ public class ProjetServiceImpl implements ProjetService{
 
 
     @Override
-    public ProjetResponseDto findByName(String titre) {
-        Projet projet = projetDao.findByNom(titre);
+    public ProjetResponseDto findByNom(String nom) {
+        Projet projet = projetDao.findByNom(nom);
         return modelMapper.map(projet, ProjetResponseDto.class);
     }
 
     @Override
-    public ProjetResponseDto update(ProjetRequestDto projetRequestDto, String titre) throws NotFoundException{
-        Optional<Projet> projetfound= Optional.ofNullable(projetDao.findByNom(titre));
+    public ProjetResponseDto update(ProjetRequestDto projetRequestDto, String nom) throws NotFoundException{
+        Optional<Projet> projetfound= Optional.ofNullable(projetDao.findByNom(nom));
        if (projetfound.isPresent()){
            Projet projet=modelMapper.map(projetRequestDto,Projet.class);
-           projet.setTitre(titre);
+           projet.setNom(nom);
            Projet update =projetDao.save(projet);
            return modelMapper.map(update, ProjetResponseDto.class);
        }else {
@@ -57,8 +60,8 @@ public class ProjetServiceImpl implements ProjetService{
     }
 
     @Override
-    public void delete(String titre) {
-        projetDao.deleteByName(titre);
+    public void delete(String nom) {
+        projetDao.deleteByNom(nom);
 
 
     }

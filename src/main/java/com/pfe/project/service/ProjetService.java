@@ -13,11 +13,11 @@ public interface ProjetService {
 
     ProjetResponseDto save(ProjetRequestDto projetRequestDto);
 
-    ProjetResponseDto findByName(String titre);
+    ProjetResponseDto findByNom(String nom);
 
-    ProjetResponseDto update(ProjetRequestDto projetRequestDto , String titre)throws NotFoundException;
+    ProjetResponseDto update(ProjetRequestDto projetRequestDto , String nom)throws NotFoundException;
 
-    void delete(String titre);
+    void delete(String nom);
 
     List<ProjetResponseDto> findAll();
 

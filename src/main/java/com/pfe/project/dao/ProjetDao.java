@@ -6,11 +6,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProjetDao extends JpaRepository<Projet,Integer> {
+public interface ProjetDao extends JpaRepository<Projet,String> {
 
-    Projet findByNom(String titre);
+    Projet findByNom(String nom);
 
-    void deleteByName(String titre);
+    void deleteByNom(String nom);
 
 
 }
