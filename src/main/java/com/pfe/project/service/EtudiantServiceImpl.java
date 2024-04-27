@@ -5,25 +5,24 @@ import com.pfe.project.dao.EtudiantDao;
 import com.pfe.project.dto.EtudiantRequestDto;
 import com.pfe.project.dto.EtudiantResponseDto;
 import com.pfe.project.modeles.Etudiant;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
+@Data
+@AllArgsConstructor
 @Service
 public class EtudiantServiceImpl implements EtudiantService {
+    @Autowired
     private EtudiantDao etudiantDao ;
     private ModelMapper modelMapper ;
-
-
-
-    public EtudiantServiceImpl(EtudiantDao etudiantDao,ModelMapper modelMapper ) {
-        this.etudiantDao = etudiantDao;
-        this.modelMapper = modelMapper;
-    }
 
 
 

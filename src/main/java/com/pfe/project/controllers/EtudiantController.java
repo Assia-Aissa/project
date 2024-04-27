@@ -4,6 +4,8 @@ import com.pfe.project.dto.EtudiantRequestDto;
 import com.pfe.project.dto.EtudiantResponseDto;
 import com.pfe.project.service.EtudiantService;
 import jakarta.validation.Valid;
+import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,10 +13,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Data
 @RestController
 @RequestMapping("/etudiants")
 public class EtudiantController {
 
+    @Autowired
      private EtudiantService etudiantService;
 
     public EtudiantController(EtudiantService etudiantService) {
@@ -22,14 +26,14 @@ public class EtudiantController {
     }
 
     @GetMapping("/etudiant")
-    public ResponseEntity<List<EtudiantResponseDto>>getEtudiant() {
+    public ResponseEntity<List<EtudiantResponseDto>> getEtudiants() {
 
         return new ResponseEntity<>(etudiantService.findAll(), HttpStatus.OK);
     }
 
 
     @PostMapping("/add")
-    public ResponseEntity<EtudiantResponseDto> save(@Valid @RequestBody EtudiantRequestDto etudiantRequestDto){
+    public ResponseEntity<EtudiantResponseDto> save(@Valid @RequestBody() EtudiantRequestDto etudiantRequestDto){
        EtudiantResponseDto etudiantResponseDto = etudiantService.save(etudiantRequestDto);
        return new ResponseEntity<>(etudiantResponseDto,HttpStatus.CREATED);
     }

@@ -25,7 +25,7 @@ public class EtudiantRequestDto {
     private String adressEmail;
 
     @NotNull(message = "Code Apogee est obligatoire !!")
-    private  Integer codeApogee;
+    private  int codeApogee;
 
 
     @NotNull

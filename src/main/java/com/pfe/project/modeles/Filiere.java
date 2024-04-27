@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.*;
+@Table(name = "Filieres")
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor

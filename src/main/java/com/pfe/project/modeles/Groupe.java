@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.List;
-
+@Table(name = "groupes")
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,7 +31,7 @@ public class Groupe implements Serializable {
    private Projet projet;
 
    @ManyToOne
-   @JoinColumn(name = "Groupe")
+   @JoinColumn(name = "responsable_pfe_id")
    private ResponsablePFE responsablePFE ;
 
 }

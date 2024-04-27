@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 @Entity
-@Table(name="professeurs")
+@Table(name="profs")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
