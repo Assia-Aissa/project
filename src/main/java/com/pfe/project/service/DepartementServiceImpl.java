@@ -10,16 +10,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 @Service
 public class DepartementServiceImpl implements  DepartementService {
 
+    @Autowired
     private DepartementDao departementDao;
     private ModelMapper modelMapper;
 
@@ -36,14 +39,14 @@ public class DepartementServiceImpl implements  DepartementService {
 
 
     @Override
-    public DepartementResponseDto findByName(String nom) {
-        Departement departement= departementDao.findByName(nom);
+    public DepartementResponseDto findByNom(String nom) {
+        Departement departement= departementDao.findByNom(nom);
         return  modelMapper.map(departement,DepartementResponseDto.class);
     }
 
     @Override
     public DepartementResponseDto update(DepartementRequestDto departementRequestDto, String nom) {
-        Optional<Departement>departementOptional =Optional.ofNullable(departementDao.findByName(nom));
+        Optional<Departement>departementOptional =Optional.ofNullable(departementDao.findByNom(nom));
         if (departementOptional.isPresent()){
             Departement departement =departementOptional.get();
             modelMapper.map(departementRequestDto,departement);

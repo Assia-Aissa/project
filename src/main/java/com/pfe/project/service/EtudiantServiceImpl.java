@@ -18,6 +18,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Service
 public class EtudiantServiceImpl implements EtudiantService {
     @Autowired

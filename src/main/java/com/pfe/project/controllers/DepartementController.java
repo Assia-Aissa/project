@@ -7,6 +7,8 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,11 +16,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 @RestController
 @RequestMapping("/departements")
 public class DepartementController {
 
+    @Autowired
     private DepartementService departementService;
 
     @GetMapping("/departement")
@@ -39,7 +43,7 @@ public class DepartementController {
     @GetMapping("/departement/{nom}")
     public  ResponseEntity<?> findByName(@PathVariable("nom") String nom ){
         DepartementResponseDto departementResponseDto ;
-        departementResponseDto = departementService.findByName(nom);
+        departementResponseDto = departementService.findByNom(nom);
         return  ResponseEntity.ok(departementResponseDto);
     }
 

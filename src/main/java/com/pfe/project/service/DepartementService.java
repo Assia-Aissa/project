@@ -10,7 +10,7 @@ public interface DepartementService {
 
     DepartementResponseDto save(DepartementRequestDto departementRequestDto);
 
-    DepartementResponseDto findByName(String nom);
+    DepartementResponseDto findByNom(String nom);
 
     DepartementResponseDto update(DepartementRequestDto departementRequestDto ,String nom);
 
