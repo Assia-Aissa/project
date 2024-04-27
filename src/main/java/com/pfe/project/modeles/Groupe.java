@@ -18,10 +18,11 @@ public class Groupe implements Serializable {
 
    @Id
    @GeneratedValue(strategy= GenerationType.IDENTITY)
-   private int numero;
+   @Column(name = "numero", nullable = false)
+   private Integer id;
 
-   @Column(nullable = false)
-   private String membres;
+   @Column(name = "membres", nullable = false)
+   private String nom;
 
    @OneToMany(mappedBy="groupe", cascade = CascadeType.ALL)
    private List<Etudiant> etudiants;

@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EtudiantDao extends JpaRepository<Etudiant,Integer> {
 
-    Etudiant findBynom(String nom);
+    Etudiant findByNom(String nom);
 
 }

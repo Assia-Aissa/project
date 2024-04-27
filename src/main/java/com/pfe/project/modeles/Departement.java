@@ -15,8 +15,8 @@ import java.util.*;
 public class Departement implements Serializable {
 
    @Id
-   @Column(nullable = false)
-   private String dnom;
+   @Column(name = "dnom", nullable = false)
+   private String nom ;
 
    @OneToMany(mappedBy = "departement",cascade = CascadeType.ALL)
 

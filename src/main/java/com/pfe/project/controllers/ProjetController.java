@@ -23,7 +23,7 @@ public class ProjetController {
     }
 
     @GetMapping("/projet")
-    public ResponseEntity<List<ProjetResponseDto>> getProjet(){
+    public ResponseEntity<List<ProjetResponseDto>> getProjets(){
 
         return new ResponseEntity<>(projetService.findAll(), HttpStatus.OK);
     }

@@ -20,7 +20,8 @@ import java.util.stream.Collectors;
 @Data
 @NoArgsConstructor
 @Service
-public class FiliereServiceImp implements FiliereService {
+public class
+FiliereServiceImp implements FiliereService {
 
     private FiliereDao filiereDao;
     private ModelMapper modelMapper;
