@@ -16,6 +16,8 @@ import java.io.Serializable;
 public class Etudiant implements Serializable {
 
    @Id
+   @GeneratedValue(strategy= GenerationType.IDENTITY)
+   private Integer id;
    @Column(name = "etnom")
    private String nom;
    @Column(nullable = false)
@@ -27,7 +29,7 @@ public class Etudiant implements Serializable {
    @Column(nullable = false)
    private  String telephone;
    @Column(nullable = false)
-   private String motdePasse;
+   private String mot_de_Passe;
 
 
    @ManyToOne

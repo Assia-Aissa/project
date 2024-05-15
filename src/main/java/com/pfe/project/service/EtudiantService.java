@@ -7,17 +7,18 @@ import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import java.util.List;
 
 public interface EtudiantService {
+
    EtudiantResponseDto save(EtudiantRequestDto etudiantRequestDto);
 
 
-   EtudiantResponseDto findById(Integer codeApogee);
+   EtudiantResponseDto findById(Integer id);
 
    EtudiantResponseDto findByNom(String nom);
 
-   void delete(Integer codeApogee);
+   void delete(Integer id);
 
 
-   EtudiantResponseDto update(EtudiantRequestDto etudiantRequestDto, Integer codeApogee) throws NotFoundException;
+   EtudiantResponseDto update(EtudiantRequestDto etudiantRequestDto, Integer id) throws NotFoundException;
 
    List<EtudiantResponseDto> findAll();
 

@@ -5,26 +5,25 @@ import com.pfe.project.dao.EtudiantDao;
 import com.pfe.project.dto.EtudiantRequestDto;
 import com.pfe.project.dto.EtudiantResponseDto;
 import com.pfe.project.modeles.Etudiant;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Service
+
+@Service()
 public class EtudiantServiceImpl implements EtudiantService {
-    @Autowired
+
+
     private EtudiantDao etudiantDao ;
     private ModelMapper modelMapper ;
 
+    public EtudiantServiceImpl(EtudiantDao etudiantDao, ModelMapper modelMapper) {
+        this.etudiantDao = etudiantDao;
+        this.modelMapper = modelMapper;
+    }
 
 
 
@@ -36,8 +35,8 @@ public class EtudiantServiceImpl implements EtudiantService {
     }
 
     @Override
-    public EtudiantResponseDto findById(Integer CodeApogee) {
-        Etudiant etudiant =etudiantDao.findById(CodeApogee).orElseThrow(()-> new EntityNotFoundException("Etudiant not found"));
+    public EtudiantResponseDto findById(Integer id) {
+        Etudiant etudiant =etudiantDao.findById(id).orElseThrow(()-> new EntityNotFoundException("Etudiant not found"));
         return modelMapper.map(etudiant, EtudiantResponseDto.class);
     }
 
@@ -48,21 +47,21 @@ public class EtudiantServiceImpl implements EtudiantService {
     }
 
     @Override
-    public void delete(Integer CodeApogee) {
-       etudiantDao.deleteById(CodeApogee);
+    public void delete(Integer id) {
+       etudiantDao.deleteById(id);
 
     }
 
     @Override
-    public EtudiantResponseDto update(EtudiantRequestDto etudiantRequestDto, Integer codeApogee) throws NotFoundException {
-        Optional<Etudiant> etudiantOptional=etudiantDao.findById(codeApogee);
+    public EtudiantResponseDto update(EtudiantRequestDto etudiantRequestDto, Integer id) throws NotFoundException {
+        Optional<Etudiant> etudiantOptional=etudiantDao.findById(id);
         if(etudiantOptional.isPresent()){
             Etudiant etudiant=modelMapper.map(etudiantRequestDto,Etudiant.class);
-            etudiant.setCodeApogee(codeApogee);
+            etudiant.setCodeApogee(id);
             Etudiant update = etudiantDao.save(etudiant);
             return modelMapper.map(update,EtudiantResponseDto.class);
         }else{
-            throw new EntityNotFoundException("Etidiant not Found");
+            throw new EntityNotFoundException("Etudient n'exist pas");
         }
     }
 

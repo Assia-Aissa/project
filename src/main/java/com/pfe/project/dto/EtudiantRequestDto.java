@@ -14,11 +14,9 @@ import lombok.NoArgsConstructor;
 public class EtudiantRequestDto {
 
     @NotNull(message = "le nom est obligatoire!!")
-    @Size(min = 3, max = 20, message = "la nombre de character doit compris entre 3 et 20")
     private String nom;
 
     @NotNull(message = "le prénom est obligatoire!!")
-    @Size(min = 3, max = 20, message = "la nombre de character doit compris entre 3 et 20")
     private String etprenom;
 
     @NotNull(message = " adresse-Email est obligatoire!!")
@@ -29,11 +27,12 @@ public class EtudiantRequestDto {
 
 
     @NotNull
-    @Pattern(regexp="^(\\+212|0)([\\-_/]*)([\\d\\-_/]*){9}$", message = "format invalid")
+    @Pattern(regexp = "^(\\+212|0)([\\-_/]*)([\\d\\-_/]*){9}$", message = "format invalid")
     private  String telephone;
 
     @NotNull(message = "le mot de passe est obligatoire !!")
-    private String motdePasse;
+    //@Size( max = 25, message = "mot de pass de size > 25 caractere")
+    private String mot_de_Passe;
 
 
 

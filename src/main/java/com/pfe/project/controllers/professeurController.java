@@ -5,15 +5,16 @@ import com.pfe.project.dto.ProfesseurRequestDto;
 import com.pfe.project.dto.ProfesseurResponseDto;
 import com.pfe.project.service.ProfesseurService;
 import jakarta.validation.Valid;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
+@Data
 @RestController
-@CrossOrigin("http://localhost:3003")
+@CrossOrigin("http://localhost:3000")
 @RequestMapping
 public class professeurController {
     @Autowired
