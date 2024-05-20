@@ -16,8 +16,20 @@ import java.util.*;
 public class Filiere implements Serializable {
 
    @Id
+   @GeneratedValue
+   private Integer idF;
+
    @Column(name="F_nom",nullable = false)
    private String nom;
+   @Column(name="F_desc")
+   private String Responsable;
+   @Column(name="F_respo",nullable = false)
+   private String description;
+
+
+
+
+
 
    @ManyToOne
    @JoinColumn(name = "nom_Filiere")

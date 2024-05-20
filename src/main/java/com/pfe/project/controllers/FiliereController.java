@@ -36,18 +36,25 @@ public class FiliereController {
         filiereResponseDto = filiereService.findByNom(nom);
         return ResponseEntity.ok(filiereResponseDto);
     }
+    @GetMapping("/filiere/{idF}")
+    public ResponseEntity<FiliereResponseDto> findById(@PathVariable("idF") Integer idF){
+        FiliereResponseDto filiereResponseDto;
+        filiereResponseDto = filiereService.findById(idF);
+        return ResponseEntity.ok(filiereResponseDto);
+    }
+    
 
     @DeleteMapping("/NoFiliere/{nom}")
-    public ResponseEntity<?> delete (@PathVariable() String nom){
-        filiereService.delete(nom);
+    public ResponseEntity<?> delete (@PathVariable() Integer idF){
+        filiereService.delete(idF);
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/filiere/{fnom}")
-   public ResponseEntity<FiliereResponseDto> update(@Valid @RequestBody FiliereRequestDto filiereRequestDto,@PathVariable  String nom)
+    @PutMapping("/filiere/{idF}")
+   public ResponseEntity<FiliereResponseDto> update(@Valid @RequestBody FiliereRequestDto filiereRequestDto,@PathVariable  Integer idF)
             throws ChangeSetPersister.NotFoundException{
         {
-            FiliereResponseDto filiereResponseDto =filiereService.update(filiereRequestDto,nom);
+            FiliereResponseDto filiereResponseDto =filiereService.update(filiereRequestDto,idF);
             return ResponseEntity.accepted().body(filiereResponseDto);
         }
 

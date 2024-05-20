@@ -12,4 +12,9 @@ public class FiliereRequestDto {
 
     @NotNull(message = "Filiere!!")
     private String nom;
+
+    private String description;
+
+    @NotNull(message = "Responsable!!")
+    private String Responsable;
 }

@@ -10,4 +10,8 @@ import lombok.NoArgsConstructor;
 public class FiliereResponseDto {
 
     private String nom;
+
+    private String Responsable;
+
+    private String description;
 }

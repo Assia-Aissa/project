@@ -39,6 +39,11 @@ FiliereServiceImp implements FiliereService {
         return modelMapper.map(saved,FiliereResponseDto.class);
     }
 
+    @Override
+    public FiliereResponseDto findById(Integer idF) {
+        Filiere filiere =filiereDao.findById(idF).orElseThrow(() -> new RuntimeException("Filiere not found"));
+        return modelMapper.map(filiere, FiliereResponseDto.class);
+    }
 
 
     @Override
@@ -49,23 +54,21 @@ FiliereServiceImp implements FiliereService {
     }
 
     @Override
-   /* public void delete(String fnom) {
-        filiereDao.deleteByNom(fnom);
-
-    }*/
-    public void delete(String nom){
-        Filiere filiere= filiereDao.findByNom(nom);
-        filiereDao.delete(filiere);
+    public void delete(Integer idF) {
+            filiereDao.deleteById(idF);
     }
 
 
+
+
+
     @Override
-    public FiliereResponseDto update(FiliereRequestDto filiereRequestDto,String nom) {
-       Optional< Filiere>filiereOptional = Optional.ofNullable(filiereDao.findByNom(nom));
+    public FiliereResponseDto update(FiliereRequestDto filiereRequestDto,Integer idF) {
+       Optional< Filiere>filiereOptional = filiereDao.findById(idF);
         if(filiereOptional.isPresent()){
             Filiere filiere =filiereOptional.get();
             modelMapper.map(filiereRequestDto,filiere);
-            filiere.setNom("nom");
+            filiere.setIdF(idF);
             Filiere updated=filiereDao.save(filiere);
             return modelMapper.map(updated,FiliereResponseDto.class);}
           else {
