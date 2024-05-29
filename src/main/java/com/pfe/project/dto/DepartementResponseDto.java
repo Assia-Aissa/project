@@ -12,4 +12,7 @@ public class DepartementResponseDto {
 
 
      private  String nom ;
+     private  String Description ;
+     private String  Responsable ;
 }
+
