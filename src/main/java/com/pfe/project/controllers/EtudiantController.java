@@ -4,7 +4,7 @@ import com.pfe.project.dto.EtudiantRequestDto;
 import com.pfe.project.dto.EtudiantResponseDto;
 import com.pfe.project.service.EtudiantService;
 import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import java.util.List;
 
 
 @Data
-@AllArgsConstructor
+@CrossOrigin("")
 @RestController
 @RequestMapping()
 public class EtudiantController {
@@ -24,8 +24,11 @@ public class EtudiantController {
 
      private EtudiantService etudiantService;
 
+    public EtudiantController(EtudiantService etudiantService) {
+        this.etudiantService = etudiantService;
+    }
 
-    @GetMapping("/etudiant")
+    @GetMapping("Etudiant/info")
     public ResponseEntity<List<EtudiantResponseDto>> getEtudiants() {
 
         return new ResponseEntity<>(etudiantService.findAll(), HttpStatus.OK);
@@ -58,7 +61,7 @@ public class EtudiantController {
     }
 
     @PutMapping("/id/{id}")
-    public ResponseEntity<EtudiantResponseDto> update(@Valid @RequestBody() EtudiantRequestDto etudiantRequestDto,@PathVariable Integer id) throws NotFoundException {
+    public ResponseEntity<EtudiantResponseDto> update(@Valid @RequestBody() EtudiantRequestDto etudiantRequestDto,@PathVariable("id") Integer id) throws NotFoundException {
        EtudiantResponseDto etudiantResponseDto= etudiantService.update(etudiantRequestDto, id);
        return ResponseEntity.accepted().body(etudiantResponseDto);
     }
