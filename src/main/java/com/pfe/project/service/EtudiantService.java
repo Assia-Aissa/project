@@ -18,7 +18,7 @@ public interface EtudiantService {
    void delete(Integer id);
 
 
-   EtudiantResponseDto update(EtudiantRequestDto etudiantRequestDto, Integer id) throws NotFoundException;
+   EtudiantResponseDto update(EtudiantRequestDto etudiantRequestDto, Integer id) ;
 
    List<EtudiantResponseDto> findAll();
 
