@@ -37,7 +37,10 @@ public class EtudiantController {
        EtudiantResponseDto etudiantResponseDto = etudiantService.save(etudiantRequestDto);
        return new ResponseEntity<>(etudiantResponseDto,HttpStatus.CREATED);
     }
-
+    @PutMapping("/accept")
+    public void acceptStudents(@RequestBody List<Integer> ids) {
+        etudiantService.acceptStudents(ids);
+    }
     @GetMapping("/id/{id}")
     public ResponseEntity<EtudiantResponseDto> findById(@PathVariable("id") Integer id) {
        EtudiantResponseDto etudiantResponseDto= etudiantService.findById(id);

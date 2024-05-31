@@ -11,8 +11,10 @@ public interface DepartementService {
     DepartementResponseDto save(DepartementRequestDto departementRequestDto);
 
     DepartementResponseDto findByNom(String nom);
+ DepartementResponseDto findById(Integer id);
 
-    DepartementResponseDto update(DepartementRequestDto departementRequestDto ,String nom);
+
+    DepartementResponseDto update(DepartementRequestDto departementRequestDto, Integer id);
 
     List<DepartementResponseDto> findAll();
 }

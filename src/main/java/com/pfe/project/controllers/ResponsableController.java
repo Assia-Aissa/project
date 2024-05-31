@@ -1,4 +1,0 @@
-package com.pfe.project.controllers;
-
-public class ResponsableController {
-}

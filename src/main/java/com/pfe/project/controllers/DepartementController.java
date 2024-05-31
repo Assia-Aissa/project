@@ -32,12 +32,13 @@ public class DepartementController {
     }
 
     @PostMapping("/add")
-    public  ResponseEntity<DepartementResponseDto> save(@Valid @RequestBody DepartementRequestDto departementRequestDto){
 
-         DepartementResponseDto departementResponseDto = departementService.save(departementRequestDto);
-         return  new ResponseEntity<>(departementResponseDto, HttpStatus.CREATED);
-
+    public ResponseEntity<DepartementResponseDto> save(@Valid @RequestBody DepartementRequestDto departementRequestDto) {
+        System.out.println("Received DTO: " + departementRequestDto);
+        DepartementResponseDto departementResponseDto = departementService.save(departementRequestDto);
+        return new ResponseEntity<>(departementResponseDto, HttpStatus.CREATED);
     }
+
 
 
     @GetMapping("/departement/{nom}")
@@ -48,10 +49,10 @@ public class DepartementController {
     }
 
 
-
-    public  ResponseEntity<DepartementResponseDto> update(@Valid @RequestBody DepartementRequestDto departementRequestDto,@PathVariable String nom)
+    @PutMapping("/id/{id}")
+    public  ResponseEntity<DepartementResponseDto> update(@Valid @RequestBody DepartementRequestDto departementRequestDto,@PathVariable Integer id)
               throws NotFoundException{
-        DepartementResponseDto departementResponseDto = departementService.update(departementRequestDto,nom );
+        DepartementResponseDto departementResponseDto = departementService.update(departementRequestDto,id );
         return ResponseEntity.accepted().body(departementResponseDto);
     }
 

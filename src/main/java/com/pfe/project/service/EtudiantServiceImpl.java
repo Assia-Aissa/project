@@ -71,4 +71,14 @@ public class EtudiantServiceImpl implements EtudiantService {
                 .stream().map(el->modelMapper.map(el,EtudiantResponseDto.class))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public void acceptStudents(List<Integer> ids) {
+        List<Etudiant> students = etudiantDao.findAllById(ids);
+        if (students.isEmpty()) {
+            throw new EntityNotFoundException("No students found for the provided IDs");
+        }
+        students.forEach(student -> student.setAccepted(true));
+        etudiantDao.saveAll(students);
+    }
 }

@@ -17,8 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Inheritance(strategy = InheritanceType.JOINED)
-public class
-Encadrant extends Professeur implements Serializable {
+public class Encadrant extends Professeur implements Serializable {
 
    private boolean archive;
 
@@ -27,4 +26,7 @@ Encadrant extends Professeur implements Serializable {
    private List<Projet> projets;
 
 
+   public void setIdentifier(Integer identifier) {
+
+   }
 }

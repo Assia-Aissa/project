@@ -5,7 +5,10 @@ import com.pfe.project.Exception.EntityAlreadyExistsException;
 import com.pfe.project.dao.DepartementDao;
 import com.pfe.project.dto.DepartementRequestDto;
 import com.pfe.project.dto.DepartementResponseDto;
+import com.pfe.project.dto.ProfesseurRequestDto;
+import com.pfe.project.dto.ProfesseurResponseDto;
 import com.pfe.project.modeles.Departement;
+import com.pfe.project.modeles.Professeur;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -45,12 +48,18 @@ public class DepartementServiceImpl implements  DepartementService {
     }
 
     @Override
-    public DepartementResponseDto update(DepartementRequestDto departementRequestDto, String nom) {
-        Optional<Departement>departementOptional =Optional.ofNullable(departementDao.findByNom(nom));
+    public DepartementResponseDto findById(Integer id) {
+        Departement departement = departementDao.findById(id).orElseThrow(()->new RuntimeException("Departemet not fount"));
+        return modelMapper.map(departement, DepartementResponseDto.class);
+    }
+
+    @Override
+    public DepartementResponseDto update(DepartementRequestDto departementRequestDto, Integer id)  {
+        Optional<Departement>departementOptional =departementDao.findById(id);
         if (departementOptional.isPresent()){
             Departement departement =departementOptional.get();
             modelMapper.map(departementRequestDto,departement);
-            departement.setNom("nom");
+            departement.setId(id);
             Departement update=departementDao.save(departement);
             return  modelMapper.map(update,DepartementResponseDto.class);
         }else {

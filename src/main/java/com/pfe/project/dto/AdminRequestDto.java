@@ -1,6 +1,6 @@
 package com.pfe.project.dto;
 
-
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,12 +8,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DepartementResponseDto {
+public class AdminRequestDto {
 
+    @NotBlank
+    private String email;
+    @NotBlank
+    private int password;
 
-     private Integer id;
-     private  String nom ;
-     private  String Description ;
-     private String  Responsable ;
 }
-
