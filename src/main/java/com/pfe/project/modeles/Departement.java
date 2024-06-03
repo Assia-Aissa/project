@@ -1,62 +1,46 @@
-
 package com.pfe.project.modeles;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+
 import java.io.Serializable;
-import java.util.*;
-@Table(name = "departements")
+import java.util.List;
+
 @Entity
+@Table(name = "departements")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Departement implements Serializable {
 
    @Id
-   @GeneratedValue(strategy= GenerationType.IDENTITY)
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Integer id;
 
-   @NotNull
+   @NotBlank
    @Column(name = "dnom", nullable = false)
-   private String nom ;
+   private String nom;
 
-   @NotNull
+   @NotBlank
    @Column(name = "desc", nullable = false)
-   private  String Description ;
+   private String description;
 
-   @NotNull
+   @NotBlank
    @Column(name = "respo", nullable = false)
-   private String  Responsable ;
+   private String responsable;
 
-
-   public void SstID(Integer identifier){
-      this.id=identifier;
-   }
-
-
-   @OneToMany(mappedBy = "departement",cascade = CascadeType.ALL)
-
+   @OneToMany(mappedBy = "departement", cascade = CascadeType.ALL)
    private List<Professeur> professeurs;
 
-
-   // In your Departement entity
    @ManyToOne
    @JoinColumn(name = "administrateur_id")
    private Administrateur administrateur;
 
-   @OneToMany(mappedBy="departement", cascade = CascadeType.ALL)
+   @OneToMany(mappedBy = "departement", cascade = CascadeType.ALL)
    private List<Filiere> filieres;
-
-
-
-
-
-
-
-
-
 }

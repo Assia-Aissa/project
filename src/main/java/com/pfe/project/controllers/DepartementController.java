@@ -4,57 +4,43 @@ import com.pfe.project.dto.DepartementRequestDto;
 import com.pfe.project.dto.DepartementResponseDto;
 import com.pfe.project.service.DepartementService;
 import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
-import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+
 @RestController
 @RequestMapping("/departements")
 public class DepartementController {
 
-    @Autowired
-    private DepartementService departementService;
+    private final DepartementService departementService;
 
-    @GetMapping("/departement")
-    public ResponseEntity<List<DepartementResponseDto>> getDepartements(){
+    public DepartementController(DepartementService departementService) {
+        this.departementService = departementService;
+    }
 
-         return  new ResponseEntity<>(departementService.findAll() , HttpStatus.OK);
+    @GetMapping
+    public ResponseEntity<List<DepartementResponseDto>> findAllDepartments() {
+        List<DepartementResponseDto> departments = departementService.findAll();
+        return ResponseEntity.ok().body(departments);
     }
 
     @PostMapping("/add")
-
-    public ResponseEntity<DepartementResponseDto> save(@Valid @RequestBody DepartementRequestDto departementRequestDto) {
-        System.out.println("Received DTO: " + departementRequestDto);
-        DepartementResponseDto departementResponseDto = departementService.save(departementRequestDto);
-        return new ResponseEntity<>(departementResponseDto, HttpStatus.CREATED);
+    public ResponseEntity<DepartementResponseDto> addDepartment(@Valid @RequestBody DepartementRequestDto requestDto) {
+        DepartementResponseDto responseDto = departementService.save(requestDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
     }
 
-
-
-    @GetMapping("/departement/{nom}")
-    public  ResponseEntity<?> findByName(@PathVariable("nom") String nom ){
-        DepartementResponseDto departementResponseDto ;
-        departementResponseDto = departementService.findByNom(nom);
-        return  ResponseEntity.ok(departementResponseDto);
+    @GetMapping("/{nom}")
+    public ResponseEntity<DepartementResponseDto> findDepartmentByName(@PathVariable("nom") String nom) {
+        DepartementResponseDto responseDto = departementService.findByNom(nom);
+        return ResponseEntity.ok().body(responseDto);
     }
 
-
-    @PutMapping("/id/{id}")
-    public  ResponseEntity<DepartementResponseDto> update(@Valid @RequestBody DepartementRequestDto departementRequestDto,@PathVariable Integer id)
-              throws NotFoundException{
-        DepartementResponseDto departementResponseDto = departementService.update(departementRequestDto,id );
-        return ResponseEntity.accepted().body(departementResponseDto);
+    @PutMapping("/{id}")
+    public ResponseEntity<DepartementResponseDto> updateDepartment(@PathVariable("id") Integer id, @Valid @RequestBody DepartementRequestDto requestDto) {
+        DepartementResponseDto responseDto = departementService.update(requestDto, id);
+        return ResponseEntity.ok().body(responseDto);
     }
-
-
 }

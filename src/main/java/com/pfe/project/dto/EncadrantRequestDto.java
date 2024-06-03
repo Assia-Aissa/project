@@ -8,7 +8,7 @@ public class EncadrantRequestDto extends ProfesseurRequestDto{
 
     private boolean archive;
 
-    @NotNull
-    private List<Integer> projetIds;
+
+    //private List<Integer> projetIds;
 
 }

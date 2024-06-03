@@ -1,76 +1,55 @@
 package com.pfe.project.service;
 
-
 import com.pfe.project.Exception.EntityAlreadyExistsException;
 import com.pfe.project.dao.DepartementDao;
 import com.pfe.project.dto.DepartementRequestDto;
 import com.pfe.project.dto.DepartementResponseDto;
-import com.pfe.project.dto.ProfesseurRequestDto;
-import com.pfe.project.dto.ProfesseurResponseDto;
 import com.pfe.project.modeles.Departement;
-import com.pfe.project.modeles.Professeur;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Service
-public class DepartementServiceImpl implements  DepartementService {
+public class DepartementServiceImpl implements DepartementService {
 
-    @Autowired
-    private DepartementDao departementDao;
-    private ModelMapper modelMapper;
+    private final DepartementDao departementDao;
+    private final ModelMapper modelMapper;
 
-
-
-
-    @Override
-    public DepartementResponseDto save(DepartementRequestDto departementRequestDto) {
-        Departement departement =modelMapper.map(departementRequestDto, Departement.class);
-        Departement saved=departementDao.save(departement);
-        return  modelMapper.map(saved,DepartementResponseDto.class);
+    public DepartementServiceImpl(DepartementDao departementDao, ModelMapper modelMapper) {
+        this.departementDao = departementDao;
+        this.modelMapper = modelMapper;
     }
 
-
+    @Override
+    public DepartementResponseDto save(DepartementRequestDto requestDto) {
+        Departement departement = modelMapper.map(requestDto, Departement.class);
+        Departement savedDepartement = departementDao.save(departement);
+        return modelMapper.map(savedDepartement, DepartementResponseDto.class);
+    }
 
     @Override
     public DepartementResponseDto findByNom(String nom) {
-        Departement departement= departementDao.findByNom(nom);
-        return  modelMapper.map(departement,DepartementResponseDto.class);
-    }
-
-    @Override
-    public DepartementResponseDto findById(Integer id) {
-        Departement departement = departementDao.findById(id).orElseThrow(()->new RuntimeException("Departemet not fount"));
+        Departement departement = departementDao.findByNom(nom);
         return modelMapper.map(departement, DepartementResponseDto.class);
     }
 
     @Override
-    public DepartementResponseDto update(DepartementRequestDto departementRequestDto, Integer id)  {
-        Optional<Departement>departementOptional =departementDao.findById(id);
-        if (departementOptional.isPresent()){
-            Departement departement =departementOptional.get();
-            modelMapper.map(departementRequestDto,departement);
-            departement.setId(id);
-            Departement update=departementDao.save(departement);
-            return  modelMapper.map(update,DepartementResponseDto.class);
-        }else {
-            throw new EntityAlreadyExistsException("Département not found ");
-        }
-
+    public DepartementResponseDto update(DepartementRequestDto requestDto, Integer id) {
+        Departement departement = departementDao.findById(id)
+                .orElseThrow(() -> new EntityAlreadyExistsException("Department not found"));
+        modelMapper.map(requestDto, departement);
+        departement.setId(id);
+        Departement updatedDepartement = departementDao.save(departement);
+        return modelMapper.map(updatedDepartement, DepartementResponseDto.class);
     }
 
     @Override
     public List<DepartementResponseDto> findAll() {
-        return departementDao.findAll().stream().map(e->modelMapper.map(e,DepartementResponseDto.class))
+        List<Departement> departments = departementDao.findAll();
+        return departments.stream()
+                .map(department -> modelMapper.map(department, DepartementResponseDto.class))
                 .collect(Collectors.toList());
     }
 }
