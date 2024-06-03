@@ -41,8 +41,8 @@ public class ProjetController {
     }
 
     @GetMapping("/nom/{titre}")
-    public ResponseEntity<?> findByName(@PathVariable() String nom){
-        ProjetResponseDto projetResponseDto =projetService.findByNom(nom);
+    public ResponseEntity<?> findByName(@PathVariable() String titre){
+        ProjetResponseDto projetResponseDto =projetService.findByNom(titre);
         return ResponseEntity.ok(projetResponseDto);
     }
 

@@ -44,7 +44,7 @@ public class FiliereController {
     }
     
 
-    @DeleteMapping("/NoFiliere/{nom}")
+    @DeleteMapping("/NoFiliere/{idF}")
     public ResponseEntity<?> delete (@PathVariable() Integer idF){
         filiereService.delete(idF);
         return ResponseEntity.noContent().build();

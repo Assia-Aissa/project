@@ -13,6 +13,6 @@ public class AdminRequestDto {
     @NotBlank
     private String email;
     @NotBlank
-    private int password;
+    private String password;
 
 }

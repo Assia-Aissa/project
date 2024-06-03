@@ -52,7 +52,7 @@ public class EtudiantController {
     }
 
     @GetMapping("/nom/{etnom}")
-    public ResponseEntity<EtudiantResponseDto> findByNom(@PathVariable("nom") String nom) {
+    public ResponseEntity<EtudiantResponseDto> findByNom(@PathVariable("etnom") String nom) {
         EtudiantResponseDto etudiantResponseDto =etudiantService.findByNom(nom);
         return ResponseEntity.ok(etudiantResponseDto);
     }
