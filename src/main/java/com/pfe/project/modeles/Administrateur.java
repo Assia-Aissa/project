@@ -22,6 +22,8 @@ public class Administrateur implements Serializable {
    @Column(nullable = false)
    private int password;
 
+   private String role;
+
 
    @OneToMany(mappedBy = "administrateur", cascade = CascadeType.ALL)
    private List<Departement> departements;

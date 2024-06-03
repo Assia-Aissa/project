@@ -23,6 +23,7 @@ public class AdminController {
 
 
 
+    @PostMapping("/admin/save")
     public ResponseEntity<AdminResponseDto> save(@Valid @RequestBody()AdminRequestDto adminRequestDto){
         AdminResponseDto adminResponseDto = adminService.save(adminRequestDto);
         return new ResponseEntity<>(adminResponseDto, HttpStatus.CREATED);

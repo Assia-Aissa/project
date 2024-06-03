@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 @RestController
 @CrossOrigin("http://localhost:3000")
-@RequestMapping("/responsablePFE")
+@RequestMapping("/responsable")
 public class ResponsablePFEController {
     @Autowired
     private ResponsablePFEService responsablePFEService;

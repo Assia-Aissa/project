@@ -16,8 +16,7 @@ public class ProfesseurRequestDto {
     @NotNull(message = "le nom est obligatoire")
     private String nom;
 
-    @NotNull(message = "le prenom est obligatoire")
-    private String prenom;
+
 
     @NotNull(message = "email est obligatoire")
     private String email;

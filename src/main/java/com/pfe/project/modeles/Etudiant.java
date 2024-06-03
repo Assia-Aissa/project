@@ -33,7 +33,8 @@ public class Etudiant implements Serializable {
 
    @Column(nullable = false)
    private boolean accepted; // Add this field to track acceptance status
-
+   @Column(name = "role")
+   private String role;
 
 
 

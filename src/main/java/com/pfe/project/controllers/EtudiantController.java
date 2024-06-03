@@ -34,7 +34,12 @@ public class EtudiantController {
         return new ResponseEntity<>(etudiantService.findAll(), HttpStatus.OK);
     }
 
-
+   //regestration
+   @PostMapping("/etudiant/save")
+   public ResponseEntity<EtudiantResponseDto> savee(@Valid @RequestBody() EtudiantRequestDto etudiantRequestDto){
+       EtudiantResponseDto etudiantResponseDto = etudiantService.save(etudiantRequestDto);
+       return new ResponseEntity<>(etudiantResponseDto,HttpStatus.CREATED);
+   }
     @PostMapping("/add")
     public ResponseEntity<EtudiantResponseDto> save(@Valid @RequestBody() EtudiantRequestDto etudiantRequestDto){
        EtudiantResponseDto etudiantResponseDto = etudiantService.save(etudiantRequestDto);

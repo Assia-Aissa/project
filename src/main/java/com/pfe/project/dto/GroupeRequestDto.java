@@ -2,10 +2,13 @@ package com.pfe.project.dto;
 
 
 
+import com.pfe.project.modeles.Etudiant;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -17,4 +20,7 @@ public class GroupeRequestDto {
 
     @NotNull(message = "les noms est obligatoire")
     private String nom;
+
+    @NotNull
+    private List<Etudiant> etudiants;
 }
