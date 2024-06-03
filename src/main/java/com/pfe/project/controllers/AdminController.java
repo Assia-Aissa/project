@@ -21,8 +21,6 @@ public class AdminController {
 
 
 
-    @PostMapping("/add")
-    public ResponseEntity<AdminResponseDto> save(@Valid @RequestBody AdminRequestDto adminRequestDto) {
 
     @PostMapping("/admin/save")
     public ResponseEntity<AdminResponseDto> save(@Valid @RequestBody()AdminRequestDto adminRequestDto){
