@@ -27,9 +27,10 @@ public class FiliereController {
 
     @PostMapping("/filiere")
     public ResponseEntity<FiliereResponseDto> save(@Valid @RequestBody FiliereRequestDto filiereRequestDto){
-        FiliereResponseDto filiereResponseDto =filiereService.save(filiereRequestDto);
-        return new ResponseEntity<>(filiereResponseDto,HttpStatus.CREATED);
+        FiliereResponseDto filiereResponseDto = filiereService.save(filiereRequestDto);
+        return new ResponseEntity<>(filiereResponseDto, HttpStatus.CREATED);
     }
+
     @GetMapping("/filiere/{nom}")
     public ResponseEntity<FiliereResponseDto> findByFnom(@PathVariable("nom") String nom){
         FiliereResponseDto filiereResponseDto;

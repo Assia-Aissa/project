@@ -15,6 +15,6 @@ public class FiliereRequestDto {
 
     private String description;
 
-    @NotNull(message = "Responsable!!")
+   // @NotNull
     private String Responsable;
 }
