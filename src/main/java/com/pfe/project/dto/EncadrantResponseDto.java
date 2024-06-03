@@ -6,7 +6,7 @@ public class EncadrantResponseDto extends ProfesseurResponseDto{
 
     private boolean archive;
 
-    private List<ProjetRequestDto> projets ;
+    //private List<ProjetRequestDto> projets ;
 
 
 }

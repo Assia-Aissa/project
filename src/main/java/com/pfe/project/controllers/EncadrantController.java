@@ -1,6 +1,7 @@
 package com.pfe.project.controllers;
 
-
+import com.pfe.project.dto.AdminRequestDto;
+import com.pfe.project.dto.AdminResponseDto;
 import com.pfe.project.dto.EncadrantRequestDto;
 import com.pfe.project.dto.EncadrantResponseDto;
 import com.pfe.project.service.EncadrantService;
@@ -17,6 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/encadrant")
 public class EncadrantController {
+
     @Autowired
     private EncadrantService encadrantService;
 
@@ -25,7 +27,7 @@ public class EncadrantController {
         return new ResponseEntity<>(encadrantService.findAll(), HttpStatus.OK);
     }
 
-    @PostMapping("/save")
+    @PostMapping("/add")
     public ResponseEntity<EncadrantResponseDto> save(@Valid @RequestBody EncadrantRequestDto encadrantRequestDto) {
         EncadrantResponseDto encadrantResponseDto = encadrantService.save(encadrantRequestDto);
         return new ResponseEntity<>(encadrantResponseDto, HttpStatus.CREATED);
