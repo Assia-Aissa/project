@@ -10,6 +10,6 @@ public interface FiliereDao extends JpaRepository<Filiere,Integer> {
     Filiere findByNom(String nom);
 
 
-    void deleteByNom(String nom);
+
 
 }

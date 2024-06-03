@@ -16,8 +16,14 @@ import java.util.*;
 public class Departement implements Serializable {
 
    @Id
+   @GeneratedValue(strategy= GenerationType.IDENTITY)
    @Column(name = "dnom", nullable = false)
    private String nom ;
+
+   private  String Description ;
+   private String  Responsable ;
+
+
 
    @OneToMany(mappedBy = "departement",cascade = CascadeType.ALL)
 

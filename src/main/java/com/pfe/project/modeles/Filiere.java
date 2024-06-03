@@ -26,11 +26,6 @@ public class Filiere implements Serializable {
    @Column(name="F_respo",nullable = false)
    private String description;
 
-
-
-
-
-
    @ManyToOne
    @JoinColumn(name = "nom_Filiere")
    private Departement departement;

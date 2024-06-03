@@ -5,7 +5,8 @@ import com.pfe.project.dto.ProfesseurResponseDto;
 
 import java.util.List;
 
-public interface ProfesseurService {
+public interface
+ProfesseurService {
 
     ProfesseurResponseDto save(ProfesseurRequestDto professeurRequestDto);
 

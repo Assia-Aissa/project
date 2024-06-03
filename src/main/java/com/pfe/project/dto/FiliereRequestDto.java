@@ -13,8 +13,9 @@ public class FiliereRequestDto {
     @NotNull(message = "Filiere!!")
     private String nom;
 
+    @NotNull(message = "le description  est obligatoire")
     private String description;
 
-    @NotNull(message = "Responsable!!")
-    private String Responsable;
+    @NotNull(message = "le responsable est obligatoire !!")
+    private String responsable;
 }

@@ -16,14 +16,18 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
+@CrossOrigin("")
 @RestController
 @RequestMapping("/departements")
 public class DepartementController {
 
+
     @Autowired
     private DepartementService departementService;
+
+    public DepartementController(DepartementService departementService) {
+        this.departementService = departementService;
+    }
 
     @GetMapping("/departement")
     public ResponseEntity<List<DepartementResponseDto>> getDepartements(){
@@ -39,18 +43,21 @@ public class DepartementController {
 
     }
 
+    @GetMapping("Departement/{id}")
+   public ResponseEntity<DepartementResponseDto> findById(@PathVariable("id") Integer id){
+        DepartementResponseDto departementResponseDto = departementService.findById(id);
+        return ResponseEntity.ok(departementResponseDto);
+   }
 
     @GetMapping("/departement/{nom}")
-    public  ResponseEntity<?> findByName(@PathVariable("nom") String nom ){
-        DepartementResponseDto departementResponseDto ;
-        departementResponseDto = departementService.findByNom(nom);
+    public  ResponseEntity<DepartementResponseDto> findByNom(@PathVariable("nom") String nom ){
+        DepartementResponseDto departementResponseDto = departementService.findByNom(nom);
         return  ResponseEntity.ok(departementResponseDto);
     }
 
 
-
-    public  ResponseEntity<DepartementResponseDto> update(@Valid @RequestBody DepartementRequestDto departementRequestDto,@PathVariable String nom)
-              throws NotFoundException{
+    @PutMapping("/id/{id}")
+    public  ResponseEntity<DepartementResponseDto> update(@Valid @RequestBody DepartementRequestDto departementRequestDto,@PathVariable("nom") String nom) {
         DepartementResponseDto departementResponseDto = departementService.update(departementRequestDto,nom );
         return ResponseEntity.accepted().body(departementResponseDto);
     }

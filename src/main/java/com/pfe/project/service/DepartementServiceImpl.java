@@ -8,7 +8,7 @@ import com.pfe.project.dto.DepartementResponseDto;
 import com.pfe.project.modeles.Departement;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,10 +17,11 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @Service
 public class DepartementServiceImpl implements  DepartementService {
+
+
 
     @Autowired
     private DepartementDao departementDao;
@@ -36,6 +37,14 @@ public class DepartementServiceImpl implements  DepartementService {
         return  modelMapper.map(saved,DepartementResponseDto.class);
     }
 
+    @Override
+    public DepartementResponseDto findById(Integer id) {
+        Departement departement = departementDao.findById(id).orElseThrow(
+                ()->new RuntimeException("Departement not found"));
+        return modelMapper.map(departement,DepartementResponseDto.class) ;
+
+
+    }
 
 
     @Override
