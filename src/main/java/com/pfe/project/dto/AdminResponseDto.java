@@ -13,6 +13,6 @@ public class AdminResponseDto {
 
     private String email;
 
-    private int password;
+    private String password;
 
 }
