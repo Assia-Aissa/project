@@ -21,6 +21,7 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping ("/Projets")
+@CrossOrigin(origins = "http://localhost:3000")
 public class ProjetController {
 
     @Autowired

@@ -20,6 +20,13 @@ public class Administrateur implements Serializable {
 
    @Column(nullable = false)
    private String email;
+<<<<<<< HEAD
+=======
+   @Column(nullable = false)
+   private String password;
+
+   private String role;
+>>>>>>> ac58d26598cb751125280253f9d950d487aa7274
 
    @Column(nullable = false)
    private String password;

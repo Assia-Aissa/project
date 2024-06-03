@@ -13,19 +13,15 @@ public class ProfesseurRequestDto {
 
 
 
-    @NotNull(message = "le nom est obligatoire")
+
     private String nom;
 
-    @NotNull(message = "le prenom est obligatoire")
-    private String prenom;
-
-    @NotNull(message = "email est obligatoire")
     private String email;
 
-    @NotBlank
+    //@NotBlank
     private String password;
 
-    @NotNull
-    @Pattern(regexp="^(\\+212|0)([\\-_/]*)([\\d\\-_/]*){9}$", message = "format invalid")
+  //  @NotNull
+   // @Pattern(regexp="^(\\+212|0)([\\-_/]*)([\\d\\-_/]*){9}$", message = "format invalid")
     private String telephone;
 }

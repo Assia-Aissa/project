@@ -15,14 +15,12 @@ import java.util.Date;
 public class ProjetRequestDto {
 
 
-    @NotNull(message = "le titre est obligatoire")
-    @Size( max = 25, message = "le nombre de character doit < 25")
+
     private String titre;
 
-     @NotNull(message = " objective est obligatoire")
+
      private String objectif;
 
-     @NotNull(message = "la date de creation ")
     private Date dateCreation;
 
 

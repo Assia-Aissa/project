@@ -23,6 +23,7 @@ public class Encadrant extends Professeur implements Serializable {
 
    private boolean archive;
 
+   private String role;
 
    @OneToMany(mappedBy = "encadrant",cascade = CascadeType.ALL)
    private List<Projet> projets;
