@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
 
@@ -15,6 +16,7 @@ import java.io.Serializable;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Professeur implements Serializable {
 
+   @Setter
    @Id
    @GeneratedValue(strategy= GenerationType.IDENTITY)
    private Integer identifier;
@@ -38,4 +40,5 @@ public class Professeur implements Serializable {
    @ManyToOne
    @JoinColumn(name="professeur_nom")
    private Departement departement;
+
 }

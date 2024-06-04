@@ -1,5 +1,5 @@
 package com.pfe.project.dto;
-import jakarta.validation.constraints.NotBlank;
+
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
@@ -11,19 +11,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProfesseurRequestDto {
 
-
-
-
-
     @NotNull(message = "le nom est obligatoire")
     private String nom;
 
+    @NotNull
     private String email;
 
-    //@NotBlank
+    @NotNull
     private String password;
 
     @NotNull
-    @Pattern(regexp="^(\\+212|0)([\\-_/]*)([\\d\\-_/]*){9}$", message = "format invalid")
+    @Pattern(regexp = "^(\\+212|0)([\\-_/]*)([\\d\\-_/]*){9}$", message = "format invalid")
     private String telephone;
 }

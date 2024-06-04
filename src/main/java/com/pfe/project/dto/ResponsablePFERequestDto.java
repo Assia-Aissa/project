@@ -8,7 +8,7 @@ public class ResponsablePFERequestDto extends EncadrantRequestDto{
 
     private boolean responsable;
 
-    @NotNull
-    private List<Integer> groupeIds;
+   // @NotNull
+   // private List<Integer> groupeIds;
 
 }
