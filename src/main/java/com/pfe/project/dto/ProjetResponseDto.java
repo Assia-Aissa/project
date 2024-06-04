@@ -1,7 +1,5 @@
 package com.pfe.project.dto;
 
-
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,16 +11,8 @@ import java.util.Date;
 @NoArgsConstructor
 public class ProjetResponseDto {
 
-
-
-
+    private Integer id;
     private String titre;
-
     private String objectif;
-
-
     private Date dateCreation;
-
-
-
 }
