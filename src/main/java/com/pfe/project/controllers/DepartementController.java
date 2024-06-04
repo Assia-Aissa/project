@@ -29,7 +29,7 @@ public class DepartementController {
         return new ResponseEntity<>(departementService.findAll(), HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<DepartementResponseDto> save(@Valid @RequestBody DepartementRequestDto departementRequestDto) {
         DepartementResponseDto savedDepartement = departementService.save(departementRequestDto);
         return new ResponseEntity<>(savedDepartement, HttpStatus.CREATED);

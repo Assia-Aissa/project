@@ -24,6 +24,9 @@ public class Groupe implements Serializable {
    @Column(name = "membres", nullable = false)
    private String nom;
 
+   @ElementCollection
+   private List<String> etudiantsNames;
+
    @OneToMany(mappedBy="groupe", cascade = CascadeType.ALL)
    private List<Etudiant> etudiants;
 

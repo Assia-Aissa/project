@@ -27,14 +27,7 @@ public class FiliereServiceImp implements FiliereService {
     @Autowired
     private ModelMapper modelMapper;
 
-<<<<<<< HEAD
 
-
-
-
-
-=======
->>>>>>> c2f3445d0fd1a9f58c09faae1812c97b825b2596
     @Override
     public FiliereResponseDto save(FiliereRequestDto filiereRequestDto) {
         Filiere filiere = modelMapper.map(filiereRequestDto, Filiere.class);
