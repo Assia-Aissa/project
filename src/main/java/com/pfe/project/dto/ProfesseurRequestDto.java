@@ -14,6 +14,10 @@ public class ProfesseurRequestDto {
 
 
 
+<<<<<<< HEAD
+    @NotNull(message = "le nom est obligatoire")
+=======
+>>>>>>> c2f3445d0fd1a9f58c09faae1812c97b825b2596
     private String nom;
 
     private String email;

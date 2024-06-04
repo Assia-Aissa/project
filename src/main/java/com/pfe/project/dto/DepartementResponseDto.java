@@ -1,5 +1,6 @@
 package com.pfe.project.dto;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,8 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DepartementResponseDto {
 
-     private Integer id;
-     private String nom;
-     private String description;
-     private String responsable;
+    private  Integer id;
+     private  String nom ;
+     private  String Description ;
+     private String  Responsable ;
 }
+
