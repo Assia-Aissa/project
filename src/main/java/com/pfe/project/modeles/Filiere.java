@@ -21,10 +21,12 @@ public class Filiere implements Serializable {
 
    @Column(name="F_nom",nullable = false)
    private String nom;
+
+
    @Column(name="F_desc")
-   private String Responsable;
-   @Column(name="F_respo",nullable = false)
    private String description;
+   @Column(name="F_respo",nullable = false)
+  private String responsable;;
 
    @ManyToOne
    @JoinColumn(name = "nom_Filiere")
@@ -32,7 +34,6 @@ public class Filiere implements Serializable {
 
 
    @OneToMany
-
    private List<Etudiant> etudiants;
 
 

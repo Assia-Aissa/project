@@ -20,14 +20,15 @@ public class Professeur implements Serializable {
    private Integer identifier;
    @Column(nullable = false)
    private String nom;
-   @Column(nullable = false)
-   private String prenom;
+
    @Column(nullable = false)
    private String email;
    @Column(nullable = false)
    private String password;
    @Column(nullable = false)
    private String telephone;
+   @Column(nullable = false)
+   private String role;
 
    public void SetIdentifier(Integer identifier){
       this.identifier=identifier;

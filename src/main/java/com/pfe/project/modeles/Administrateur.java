@@ -20,7 +20,9 @@ public class Administrateur implements Serializable {
    @Column(nullable = false)
    private String email;
    @Column(nullable = false)
-   private int password;
+   private String password;
+
+   private String role;
 
 
    @OneToMany(mappedBy = "administrateur", cascade = CascadeType.ALL)

@@ -1,5 +1,6 @@
 package com.pfe.project.controllers;
 
+import com.pfe.project.dto.AdminResponseDto;
 import com.pfe.project.dto.EtudiantRequestDto;
 import com.pfe.project.dto.EtudiantResponseDto;
 import com.pfe.project.service.EtudiantService;
@@ -34,22 +35,31 @@ public class EtudiantController {
         return new ResponseEntity<>(etudiantService.findAll(), HttpStatus.OK);
     }
 
-
+   //regestration
+   @PostMapping("/etudiant/save")
+   public ResponseEntity<EtudiantResponseDto> savee(@Valid @RequestBody() EtudiantRequestDto etudiantRequestDto){
+       EtudiantResponseDto etudiantResponseDto = etudiantService.save(etudiantRequestDto);
+       return new ResponseEntity<>(etudiantResponseDto,HttpStatus.CREATED);
+   }
     @PostMapping("/add")
     public ResponseEntity<EtudiantResponseDto> save(@Valid @RequestBody() EtudiantRequestDto etudiantRequestDto){
        EtudiantResponseDto etudiantResponseDto = etudiantService.save(etudiantRequestDto);
        return new ResponseEntity<>(etudiantResponseDto,HttpStatus.CREATED);
+    }
+    @PutMapping("/accept")
+    public void acceptStudents(@RequestBody List<Integer> ids) {
+        etudiantService.acceptStudents(ids);
     }
 
     @GetMapping("/id/{id}")
     public ResponseEntity<EtudiantResponseDto> findById(@PathVariable("id") Integer id) {
        EtudiantResponseDto etudiantResponseDto= etudiantService.findById(id);
        return ResponseEntity.ok(etudiantResponseDto);
-
     }
 
+
     @GetMapping("/nom/{etnom}")
-    public ResponseEntity<EtudiantResponseDto> findByNom(@PathVariable("nom") String nom) {
+    public ResponseEntity<EtudiantResponseDto> findByNom(@PathVariable("etnom") String nom) {
         EtudiantResponseDto etudiantResponseDto =etudiantService.findByNom(nom);
         return ResponseEntity.ok(etudiantResponseDto);
     }

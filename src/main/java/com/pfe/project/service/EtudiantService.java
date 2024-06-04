@@ -22,4 +22,6 @@ public interface EtudiantService {
 
    List<EtudiantResponseDto> findAll();
 
+   public void acceptStudents(List<Integer> ids);
+
 }
