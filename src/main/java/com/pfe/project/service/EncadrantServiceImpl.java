@@ -1,36 +1,30 @@
 package com.pfe.project.service;
 
+import com.pfe.project.Exception.EntityAlreadyExistsException;
 import com.pfe.project.dao.EncadrantDao;
 import com.pfe.project.dto.EncadrantRequestDto;
 import com.pfe.project.dto.EncadrantResponseDto;
 import com.pfe.project.modeles.Encadrant;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class EncadrantServiceImpl implements EncadrantService {
 
-    @Autowired
-    private EncadrantDao encadrantDao;
-
-    @Autowired
-    private ModelMapper modelMapper;
+    private final EncadrantDao encadrantDao;
+    private final ModelMapper modelMapper;
 
     @Override
     public EncadrantResponseDto save(EncadrantRequestDto encadrantRequestDto) {
         Encadrant encadrant = modelMapper.map(encadrantRequestDto, Encadrant.class);
-        Encadrant savedEncadrant = encadrantDao.save(encadrant);
-        return modelMapper.map(savedEncadrant, EncadrantResponseDto.class);
+        Encadrant saved = encadrantDao.save(encadrant);
+        return modelMapper.map(saved, EncadrantResponseDto.class);
     }
 
     @Override
@@ -41,10 +35,16 @@ public class EncadrantServiceImpl implements EncadrantService {
 
     @Override
     public EncadrantResponseDto update(EncadrantRequestDto encadrantRequestDto, Integer id) {
-        Encadrant encadrant = encadrantDao.findById(id).orElseThrow(() -> new RuntimeException("Encadrant not found"));
-        modelMapper.map(encadrantRequestDto, encadrant);
-        Encadrant updatedEncadrant = encadrantDao.save(encadrant);
-        return modelMapper.map(updatedEncadrant, EncadrantResponseDto.class);
+        Optional<Encadrant> encadrantFound = encadrantDao.findById(id);
+        if (encadrantFound.isPresent()) {
+            Encadrant encadrant = encadrantFound.get();
+            modelMapper.map(encadrantRequestDto, encadrant);
+            encadrant.setId(id);
+            Encadrant updated = encadrantDao.save(encadrant);
+            return modelMapper.map(updated, EncadrantResponseDto.class);
+        } else {
+            throw new EntityAlreadyExistsException("Encadrant non trouvé");
+        }
     }
 
     @Override
