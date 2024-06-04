@@ -13,5 +13,6 @@ public class FiliereResponseDto {
 
     private String description;
 
-    private String Responsable;
+    // Corrected field name to follow Java conventions
+    private String responsable;
 }

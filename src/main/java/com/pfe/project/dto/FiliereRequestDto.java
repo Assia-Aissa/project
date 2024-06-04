@@ -15,6 +15,6 @@ public class FiliereRequestDto {
 
     private String description;
 
-   // @NotNull
-    private String Responsable;
+    // Corrected field name to follow Java conventions
+    private String responsable;
 }

@@ -21,12 +21,11 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @Service
 public class FiliereServiceImp implements FiliereService {
-
     @Autowired
     private FiliereDao filiereDao;
 
     @Autowired
-    private ModelMapper modelMapper; // Inject ModelMapper
+    private ModelMapper modelMapper;
 
     @Override
     public FiliereResponseDto save(FiliereRequestDto filiereRequestDto) {

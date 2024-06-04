@@ -7,16 +7,15 @@ import java.util.List;
 
 public interface FiliereService {
 
-    FiliereResponseDto save (FiliereRequestDto filiereRequestDto);
+    FiliereResponseDto save(FiliereRequestDto filiereRequestDto);
 
     FiliereResponseDto findById(Integer idF);
 
     FiliereResponseDto findByNom(String nom);
 
     void delete(Integer idF);
-    FiliereResponseDto update(FiliereRequestDto filiereRequestDto,Integer idF);
+
+    FiliereResponseDto update(FiliereRequestDto filiereRequestDto, Integer idF);
 
     List<FiliereResponseDto> findAll();
-
-
 }
