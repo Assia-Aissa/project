@@ -17,6 +17,7 @@ public class Departement implements Serializable {
 
    @Id
    @GeneratedValue(strategy= GenerationType.IDENTITY)
+   private Integer id;
    @Column(name = "dnom", nullable = false)
    private String nom ;
 

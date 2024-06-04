@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DepartementResponseDto {
 
-
+    private  Integer id;
      private  String nom ;
      private  String Description ;
      private String  Responsable ;

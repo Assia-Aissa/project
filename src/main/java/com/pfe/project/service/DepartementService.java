@@ -12,7 +12,7 @@ public interface DepartementService {
 
     DepartementResponseDto findByNom(String nom);
 
-    DepartementResponseDto update(DepartementRequestDto departementRequestDto ,String nom);
+    DepartementResponseDto update(DepartementRequestDto departementRequestDto ,Integer id);
 
     DepartementResponseDto findById (Integer id);
 
