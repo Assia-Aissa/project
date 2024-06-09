@@ -12,6 +12,10 @@ import lombok.NoArgsConstructor;
 public class ProfesseurRequestDto {
 
     @NotNull(message = "le nom est obligatoire")
+<<<<<<< HEAD
+
+=======
+>>>>>>> 11e97d626cfca60cf634e02b5bd12e9ef5793e94
     private String nom;
 
     @NotNull
