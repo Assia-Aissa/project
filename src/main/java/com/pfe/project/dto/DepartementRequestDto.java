@@ -10,12 +10,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DepartementRequestDto {
 
-    @NotBlank
+    @NotBlank(message = "Name is important!!")
     private String nom;
 
-    @NotBlank
     private String description;
 
-    @NotBlank
     private String responsable;
 }

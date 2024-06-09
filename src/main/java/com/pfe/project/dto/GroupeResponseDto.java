@@ -15,6 +15,5 @@ public class GroupeResponseDto {
 
     private String nom;
 
-    // Only include the names of the students
-    private List<String> etudiantsNames;
+
 }

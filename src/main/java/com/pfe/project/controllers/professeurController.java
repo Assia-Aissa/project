@@ -19,7 +19,7 @@ public class professeurController {
     private final ProfesseurService professeurService;
 
     @GetMapping("/info")
-    public ResponseEntity<List<ProfesseurResponseDto>> getProfesseur() {
+    public ResponseEntity<List<ProfesseurResponseDto>> getProfesseurs() {
         return new ResponseEntity<>(professeurService.findAll(), HttpStatus.OK);
     }
 

@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
-
+import java.util.Optional;
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping("/filieres")
 public class FiliereController {
@@ -55,4 +56,7 @@ public class FiliereController {
         FiliereResponseDto filiereResponseDto = filiereService.update(filiereRequestDto, idF);
         return ResponseEntity.accepted().body(filiereResponseDto);
     }
+
+
+
 }

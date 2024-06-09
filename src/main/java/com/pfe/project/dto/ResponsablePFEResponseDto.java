@@ -7,5 +7,5 @@ public class ResponsablePFEResponseDto extends EncadrantResponseDto{
     private boolean responsable;
 
     private String nom;
-   // private List<GroupeResponseDto> groups;
+
 }

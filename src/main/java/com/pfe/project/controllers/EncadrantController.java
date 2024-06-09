@@ -16,6 +16,7 @@ import java.util.List;
 
 @Data
 @RestController
+@CrossOrigin("http://localhost:3000")
 @RequestMapping("/encadrant")
 public class EncadrantController {
 

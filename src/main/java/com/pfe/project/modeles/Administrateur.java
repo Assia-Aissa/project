@@ -22,10 +22,11 @@ public class Administrateur implements Serializable {
    @Column(nullable = false)
    private String password;
 
+
    private String role;
 
-
+/*
    @OneToMany(mappedBy = "administrateur", cascade = CascadeType.ALL)
-   private List<Departement> departements;
+   private List<depto> departements;*/
 
 }

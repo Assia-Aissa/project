@@ -11,8 +11,7 @@ import lombok.NoArgsConstructor;
 public class DepartementResponseDto {
 
     private  Integer id;
-     private  String nom ;
-     private  String Description ;
-     private String  Responsable ;
+    private  String nom ;
+    private  String description ;
+    private String responsable;
 }
-

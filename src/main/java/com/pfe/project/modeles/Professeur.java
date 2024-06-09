@@ -32,10 +32,6 @@ public class Professeur implements Serializable {
    @Column(nullable = false)
    private String role;
 
-   public void SetIdentifier(Integer identifier){
-      this.identifier=identifier;
-   }
-
 
    @ManyToOne
    @JoinColumn(name="professeur_nom")

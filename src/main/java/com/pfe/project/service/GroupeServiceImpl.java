@@ -26,8 +26,6 @@ public class GroupeServiceImpl implements GroupeService {
     @Override
     public GroupeResponseDto save(GroupeRequestDto groupeRequestDto) {
         Groupe groupe = modelMapper.map(groupeRequestDto, Groupe.class);
-        // Set the list of students manually
-        groupe.setEtudiantsNames(groupeRequestDto.getEtudiantsNames());
         Groupe saved = groupeDao.save(groupe);
         return modelMapper.map(saved, GroupeResponseDto.class);
     }

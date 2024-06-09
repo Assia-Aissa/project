@@ -1,6 +1,7 @@
 package com.pfe.project.service;
 
 import com.pfe.project.Exception.EntityAlreadyExistsException;
+import com.pfe.project.Exception.EntityNotFoundException;
 import com.pfe.project.dao.FiliereDao;
 import com.pfe.project.dto.FiliereRequestDto;
 import com.pfe.project.dto.FiliereResponseDto;
@@ -35,12 +36,13 @@ public class FiliereServiceImp implements FiliereService {
         return modelMapper.map(saved, FiliereResponseDto.class);
     }
 
-    @Override
+   @Override
     public FiliereResponseDto findById(Integer idF) {
         Filiere filiere = filiereDao.findById(idF)
                 .orElseThrow(() -> new RuntimeException("Filiere not found"));
         return modelMapper.map(filiere, FiliereResponseDto.class);
     }
+
 
     @Override
     public FiliereResponseDto findByNom(String nom) {
@@ -73,4 +75,6 @@ public class FiliereServiceImp implements FiliereService {
                 .map(e -> modelMapper.map(e, FiliereResponseDto.class))
                 .collect(Collectors.toList());
     }
+
+
 }

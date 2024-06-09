@@ -15,4 +15,7 @@ public class AdminRequestDto {
     @NotBlank
     private String password;
 
+    @NotBlank
+    private String fullName;
+
 }

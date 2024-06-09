@@ -30,7 +30,7 @@ public class Filiere implements Serializable {
 
    @ManyToOne
    @JoinColumn(name = "nom_Filiere")
-   private Departement departement;
+   private  Departement departement;
 
 
    @OneToMany

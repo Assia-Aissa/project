@@ -18,7 +18,5 @@ public class GroupeRequestDto {
     @NotNull(message = "le nom est obligatoire")
     private String nom;
 
-    // Change to list of student names
-    @NotNull
-    private List<String> etudiantsNames;
+
 }

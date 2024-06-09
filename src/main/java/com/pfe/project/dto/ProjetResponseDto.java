@@ -14,5 +14,5 @@ public class ProjetResponseDto {
     private Integer id;
     private String titre;
     private String objectif;
-    private Date dateCreation;
+    private String dateCreation;
 }

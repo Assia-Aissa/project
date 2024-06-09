@@ -21,13 +21,13 @@ public class Projet implements Serializable {
    @Column(nullable = false)
    private String objectif;
    @Column(nullable = false)
-   private Date dateCreation;
+   private String dateCreation;
    @Column(nullable = false)
    private boolean cacher;
 
    //many project created by the encadrant
    @ManyToOne
-   private Encadrant encadrant;
+  private Encadrant encadrant;
 
    @OneToOne
    @JoinColumn(name="groupe")

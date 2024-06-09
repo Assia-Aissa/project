@@ -1,9 +1,7 @@
 package com.pfe.project.modeles;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.List;
@@ -15,26 +13,27 @@ import java.util.List;
 @NoArgsConstructor
 public class Departement implements Serializable {
 
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-   @Column(name = "nom", nullable = false)
-   private String nom;
+    @Column(name = "nom", nullable = false)
+    private String nom;
 
-   @Column(name = "description", nullable = false)
-   private String description;
 
-   @Column(name = "responsable", nullable = false)
-   private String responsable;
+    @Column(name = "description")
+    private String description;
 
-   @OneToMany(mappedBy = "departement", cascade = CascadeType.ALL)
-   private List<Professeur> professeurs;
+    @Column(name = "responsable")
+    private String responsable;
 
-   @ManyToOne
-   @JoinColumn(name = "administrateur_id")
-   private Administrateur administrateur;
+    @OneToMany(mappedBy = "departement", cascade = CascadeType.ALL)
+    private List<Professeur> professeurs;
 
-   @OneToMany(mappedBy = "departement", cascade = CascadeType.ALL)
-   private List<Filiere> filieres;
+    @ManyToOne
+    @JoinColumn(name = "administrateur_id")
+    private Administrateur administrateur;
+
+    @OneToMany(mappedBy = "departement", cascade = CascadeType.ALL)
+    private List<Filiere> filieres;
 }

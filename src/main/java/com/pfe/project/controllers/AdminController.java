@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @Data
 @AllArgsConstructor
 @RestController
+@CrossOrigin("http://localhost:3000")
 @RequestMapping()
 public class AdminController {
 

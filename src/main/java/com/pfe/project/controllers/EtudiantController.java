@@ -17,7 +17,7 @@ import java.util.List;
 
 
 @Data
-@CrossOrigin("")
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping()
 public class EtudiantController {

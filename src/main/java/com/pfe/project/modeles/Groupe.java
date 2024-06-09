@@ -21,11 +21,10 @@ public class Groupe implements Serializable {
    @Column(name = "numero", nullable = false)
    private Integer id;
 
-   @Column(name = "membres", nullable = false)
+   @Column(name = "Name", nullable = false)
    private String nom;
 
-   @ElementCollection
-   private List<String> etudiantsNames;
+
 
    @OneToMany(mappedBy="groupe", cascade = CascadeType.ALL)
    private List<Etudiant> etudiants;

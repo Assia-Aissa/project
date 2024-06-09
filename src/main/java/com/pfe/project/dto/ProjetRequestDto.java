@@ -19,5 +19,5 @@ public class ProjetRequestDto {
     private String objectif;
 
     @NotNull(message = "La date de création est obligatoire")
-    private Date dateCreation;
+    private String dateCreation;
 }

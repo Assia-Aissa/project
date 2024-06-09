@@ -9,6 +9,6 @@ public class EncadrantRequestDto extends ProfesseurRequestDto{
     private boolean archive;
 
 
-    //private List<Integer> projetIds;
+
 
 }
