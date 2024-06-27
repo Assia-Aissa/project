@@ -29,12 +29,12 @@ public class Professeur implements Serializable {
    private String password;
    @Column(nullable = false)
    private String telephone;
-   @Column(nullable = false)
+
    private String role;
 
 
    @ManyToOne
-   @JoinColumn(name="professeur_nom")
+   @JoinColumn(name="dept_nom")
    private Departement departement;
 
 }

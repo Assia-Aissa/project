@@ -16,14 +16,16 @@ import java.util.*;
 public class Projet implements Serializable {
 
    @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
+   private Integer id;
    @Column(nullable = false,name = "titre")
-   private String nom;
+   private String titre;
    @Column(nullable = false)
    private String objectif;
    @Column(nullable = false)
-   private String dateCreation;
-   @Column(nullable = false)
-   private boolean cacher;
+   private String date_creation;
+
+   private boolean archiver;
 
    //many project created by the encadrant
    @ManyToOne
@@ -32,5 +34,9 @@ public class Projet implements Serializable {
    @OneToOne
    @JoinColumn(name="groupe")
    private Groupe groupe;
+
+    public void setEtudiants(List<Etudiant> collect) {
+    }
+
 
 }

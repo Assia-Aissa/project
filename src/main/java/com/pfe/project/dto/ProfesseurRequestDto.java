@@ -11,11 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProfesseurRequestDto {
 
-    @NotNull(message = "le nom est obligatoire")
-<<<<<<< HEAD
-
-=======
->>>>>>> 11e97d626cfca60cf634e02b5bd12e9ef5793e94
+    @NotNull
     private String nom;
 
     @NotNull
@@ -27,4 +23,6 @@ public class ProfesseurRequestDto {
     @NotNull
     @Pattern(regexp = "^(\\+212|0)([\\-_/]*)([\\d\\-_/]*){9}$", message = "format invalid")
     private String telephone;
+
+    private Integer departement_id;
 }

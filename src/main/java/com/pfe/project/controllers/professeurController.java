@@ -35,6 +35,7 @@ public class professeurController {
         return ResponseEntity.ok(professeurResponseDto);
     }
 
+    //not working
     @GetMapping("/nom/{nom}")
     public ResponseEntity<ProfesseurResponseDto> findByNom(@PathVariable("nom") String nom) {
         ProfesseurResponseDto professeurResponseDto = professeurService.findByNom(nom);

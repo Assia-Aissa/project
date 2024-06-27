@@ -34,7 +34,9 @@ public class EtudiantServiceImpl implements EtudiantService {
     @Override
     public EtudiantResponseDto save(EtudiantRequestDto etudiantRequestDto) {
         Etudiant etudiant = modelMapper.map(etudiantRequestDto, Etudiant.class);
+        System.out.println("Mapped etude: " + etudiant);
         Etudiant saved = etudiantDao.save(etudiant);
+        System.out.println("Saved etude: " + saved);
         return modelMapper.map(saved, EtudiantResponseDto.class);
     }
 

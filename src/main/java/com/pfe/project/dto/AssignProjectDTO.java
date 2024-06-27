@@ -7,13 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FiliereResponseDto {
-
-    private Integer idF;
-    private String nom;
-
-    private String description;
-
-
-    private String responsable;
+public class AssignProjectDTO {
+    private Integer groupId;
+    private Integer projectId;
 }

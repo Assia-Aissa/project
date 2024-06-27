@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -19,5 +21,9 @@ public class ProjetRequestDto {
     private String objectif;
 
     @NotNull(message = "La date de création est obligatoire")
-    private String dateCreation;
+    private String date_creation;
+
+
+    /*@NotNull
+     private List<Integer> etudiantIds;*/
 }

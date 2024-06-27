@@ -1,5 +1,6 @@
 package com.pfe.project.controllers;
 
+import com.pfe.project.dto.AssignProjectDTO;
 import com.pfe.project.dto.ProjetRequestDto;
 import com.pfe.project.dto.ProjetResponseDto;
 import com.pfe.project.service.ProjetService;
@@ -23,7 +24,7 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000")
 public class ProjetController {
 
-    @Autowired
+
     private ProjetService projetService;
 
     @GetMapping("/projet")
@@ -31,27 +32,33 @@ public class ProjetController {
         return new ResponseEntity<>(projetService.findAll(), HttpStatus.OK);
     }
 
-    @PostMapping("/add")
-    public ResponseEntity<ProjetResponseDto> save(@Valid @RequestBody ProjetRequestDto projetRequestDto) {
-        ProjetResponseDto projetResponseDto = projetService.save(projetRequestDto);
-        return new ResponseEntity<>(projetResponseDto, HttpStatus.CREATED);
+    @PostMapping("/assign-project")
+    public ResponseEntity<String> assignProjectToGroup(@RequestBody AssignProjectDTO assignProjectDTO) {
+        projetService.assignProjectToGroup(assignProjectDTO);
+        return ResponseEntity.ok("Project assigned to group successfully");
     }
 
-    @GetMapping("/nom/{titre}")
-    public ResponseEntity<ProjetResponseDto> findByName(@PathVariable String titre) {
-        ProjetResponseDto projetResponseDto = projetService.findByNom(titre);
+    @PostMapping("/save")
+    public ResponseEntity<ProjetResponseDto> save(@RequestBody @Valid ProjetRequestDto projetRequestDto) {
+        ProjetResponseDto response = projetService.save(projetRequestDto);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/nom/{id}")
+    public ResponseEntity<ProjetResponseDto> findByName(@PathVariable Integer id ) {
+        ProjetResponseDto projetResponseDto = projetService.findById(id);
         return ResponseEntity.ok(projetResponseDto);
     }
 
-    @DeleteMapping("/nom/{titre}")
-    public ResponseEntity<Void> delete(@PathVariable String titre) {
-        projetService.delete(titre);
+    @DeleteMapping("/nom/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+        projetService.delete(id);
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/update/{titre}")
-    public ResponseEntity<ProjetResponseDto> update(@Valid @RequestBody ProjetRequestDto projetRequestDto, @PathVariable String titre) throws ChangeSetPersister.NotFoundException {
-        ProjetResponseDto projetResponseDto = projetService.update(projetRequestDto, titre);
+    @PutMapping("/update/{id}")
+    public ResponseEntity<ProjetResponseDto> update(@Valid @RequestBody ProjetRequestDto projetRequestDto, @PathVariable Integer id) throws ChangeSetPersister.NotFoundException {
+        ProjetResponseDto projetResponseDto = projetService.update(projetRequestDto, id);
         return ResponseEntity.accepted().body(projetResponseDto);
     }
 }

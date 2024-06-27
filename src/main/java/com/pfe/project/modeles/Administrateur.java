@@ -21,9 +21,11 @@ public class Administrateur implements Serializable {
    private String email;
    @Column(nullable = false)
    private String password;
+   @Column(nullable = false)
+   private String fullName;
 
 
-   private String role;
+
 
 /*
    @OneToMany(mappedBy = "administrateur", cascade = CascadeType.ALL)

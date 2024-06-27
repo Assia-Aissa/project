@@ -1,6 +1,7 @@
 package com.pfe.project.service;
 
 
+import com.pfe.project.dto.AssignProjectDTO;
 import com.pfe.project.dto.ProjetRequestDto;
 import com.pfe.project.dto.ProjetResponseDto;
 
@@ -13,14 +14,14 @@ public interface ProjetService {
 
     ProjetResponseDto save(ProjetRequestDto projetRequestDto);
 
-    ProjetResponseDto findByNom(String nom);
+    ProjetResponseDto findById(Integer id);
 
-    ProjetResponseDto update(ProjetRequestDto projetRequestDto , String nom)throws NotFoundException;
+    ProjetResponseDto update(ProjetRequestDto projetRequestDto , Integer id)throws NotFoundException;
 
-    void delete(String nom);
+    void delete(Integer id);
 
     List<ProjetResponseDto> findAll();
 
 
-
+    void assignProjectToGroup(AssignProjectDTO assignProjectDTO);
 }

@@ -26,9 +26,6 @@ public class Groupe implements Serializable {
 
 
 
-   @OneToMany(mappedBy="groupe", cascade = CascadeType.ALL)
-   private List<Etudiant> etudiants;
-
    @OneToOne
    private Projet projet;
 
@@ -36,4 +33,15 @@ public class Groupe implements Serializable {
    @JoinColumn(name = "responsable_pfe_id")
    private ResponsablePFE responsablePFE ;
 
+    public void setProject(Projet project) {
+    }
+
+
+   public List<Etudiant> getEtudiants() {
+       return null;
+   }
+
+
+   public void setEtudiants(List<Etudiant> etudiants) {
+   }
 }

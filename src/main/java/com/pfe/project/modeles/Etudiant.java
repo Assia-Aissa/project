@@ -34,15 +34,16 @@ public class Etudiant implements Serializable {
    @Column(nullable = false)
    private boolean accepted; // Add this field to track acceptance status
    @Column(name = "role")
-   private String role;
-
+   private boolean responsable;
+   // Method to get the full name
+   public String getFullName() {
+      return etprenom + " " + nom;
+   }
 
 
 
    @ManyToOne
    private Filiere filiere;
 
-   @ManyToOne
-   @JoinColumn(name="Members")
-   private Groupe groupe;
+
 }

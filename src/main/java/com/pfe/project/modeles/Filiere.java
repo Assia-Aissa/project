@@ -16,7 +16,7 @@ import java.util.*;
 public class Filiere implements Serializable {
 
    @Id
-   @GeneratedValue
+   @GeneratedValue(strategy= GenerationType.IDENTITY)
    private Integer idF;
 
    @Column(name="F_nom",nullable = false)

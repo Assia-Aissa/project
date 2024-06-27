@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -14,5 +15,6 @@ public class ProjetResponseDto {
     private Integer id;
     private String titre;
     private String objectif;
-    private String dateCreation;
+    private String date_creation;
+
 }

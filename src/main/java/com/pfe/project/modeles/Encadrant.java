@@ -23,7 +23,7 @@ public class Encadrant extends Professeur implements Serializable {
 
    private boolean archive;
 
-   private String role;
+
 
 
    @OneToMany(mappedBy = "encadrant",cascade = CascadeType.ALL)
@@ -33,4 +33,8 @@ public class Encadrant extends Professeur implements Serializable {
    public void setIdentifier(Integer identifier) {
 
    }
+
+    public void setId(Integer id) {
+
+    }
 }

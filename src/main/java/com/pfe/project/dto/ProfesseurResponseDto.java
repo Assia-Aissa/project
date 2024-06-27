@@ -14,4 +14,6 @@ public class ProfesseurResponseDto {
     private String email;
     private String password;
     private String telephone;
+
+    private String departement;
 }
