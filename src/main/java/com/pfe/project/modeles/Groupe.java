@@ -33,15 +33,16 @@ public class Groupe implements Serializable {
    @JoinColumn(name = "responsable_pfe_id")
    private ResponsablePFE responsablePFE ;
 
-    public void setProject(Projet project) {
-    }
+
+   @ManyToMany
+   @JoinTable(
+           name = "groupe_etudiant",
+           joinColumns = @JoinColumn(name = "groupe_id"),
+           inverseJoinColumns = @JoinColumn(name = "etudiant_id")
+   )
+   private List<Etudiant> etudiants;
 
 
-   public List<Etudiant> getEtudiants() {
-       return null;
-   }
-
-
-   public void setEtudiants(List<Etudiant> etudiants) {
+   public void setProject(Projet project) {
    }
 }

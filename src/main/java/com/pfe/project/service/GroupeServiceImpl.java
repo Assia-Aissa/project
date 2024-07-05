@@ -26,38 +26,39 @@ public class GroupeServiceImpl implements GroupeService {
     private GroupeDao groupeDao;
     @Autowired
     private  ModelMapper modelMapper;
+    @Autowired
+    private EtudiantDao etudiantDao;
 
-
-    public GroupeServiceImpl(GroupeDao groupeDao, ModelMapper modelMapper) {
+    public GroupeServiceImpl(GroupeDao groupeDao, ModelMapper modelMapper ,EtudiantDao etudiantDao) {
         this.groupeDao = groupeDao;
         this.modelMapper = modelMapper;
+        this.etudiantDao = etudiantDao;
     }
     @Override
     public GroupeResponseDto save(GroupeRequestDto groupeRequestDto) {
         Groupe groupe = modelMapper.map(groupeRequestDto, Groupe.class);
+
+        // Fetch the students by their IDs and set them to the group
+        List<Etudiant> etudiants = groupeRequestDto.getEtudiantIds().stream()
+                .map(etudiantDao::findById)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .collect(Collectors.toList());
+
+        groupe.setEtudiants(etudiants);
         groupeDao.save(groupe);
-        return modelMapper.map(groupe, GroupeResponseDto.class);
+
+        // Create the response DTO
+        GroupeResponseDto responseDto = modelMapper.map(groupe, GroupeResponseDto.class);
+        List<String> etudiantNames = etudiants.stream()
+                .map(e -> e.getNom() + " " + e.getEtprenom())
+                .collect(Collectors.toList());
+        responseDto.setEtudiantNames(etudiantNames);
+
+        return responseDto;
     }
-   /* public GroupeResponseDto save(GroupeRequestDto groupeRequestDto) {
-        Groupe groupe = modelMapper.map(groupeRequestDto, Groupe.class);
 
-        Groupe savedGroupe = groupeDao.save(groupe);
 
-        // Check if etudiants list is not empty
-        if (!etudiants.isEmpty()) {
-            List<String> etudiantNames = etudiants.stream()
-                    .map(e -> e.getNom() + " " + e.getEtprenom())
-                    .collect(Collectors.toList());
-
-            GroupeResponseDto responseDto = modelMapper.map(savedGroupe, GroupeResponseDto.class);
-            responseDto.setEtudiantNames(etudiantNames);
-
-            return responseDto;
-        } else {
-            // Handle the case where no etudiants were found
-            throw new RuntimeException("No etudiants found for the given IDs");
-        }
-    }*/
 
     @Override
     public GroupeResponseDto findById(Integer id) {

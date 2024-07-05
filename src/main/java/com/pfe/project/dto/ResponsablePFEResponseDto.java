@@ -1,11 +1,17 @@
 package com.pfe.project.dto;
 
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.util.List;
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ResponsablePFEResponseDto extends EncadrantResponseDto{
 
     private boolean responsable;
 
-    private String nom;
+
 
 }

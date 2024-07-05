@@ -17,5 +17,5 @@ public class GroupeResponseDto {
     private String nom;
 
 
-    //private List<String> etudiantNames;
+    private List<String> etudiantNames;
 }

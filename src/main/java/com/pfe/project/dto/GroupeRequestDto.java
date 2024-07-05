@@ -12,13 +12,12 @@ import java.util.List;
 @NoArgsConstructor
 public class GroupeRequestDto {
 
-    @NotNull(message = "le nombre de groupe est obligatoire")
-    private Integer id;
+
 
     @NotNull(message = "le nom est obligatoire")
     private String nom;
-    /*@NotNull(message = "La liste des étudiants est obligatoire")
-    private List<Integer> etudiantIds;*/
+    @NotNull(message = "La liste des étudiants est obligatoire")
+    private List<Integer> etudiantIds;
 
 
 }

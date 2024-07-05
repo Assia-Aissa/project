@@ -17,7 +17,6 @@ import java.util.List;
 @NoArgsConstructor
 public class ResponsablePFE extends Encadrant implements Serializable {
 
-
    @Column(nullable = false)
    private boolean responsable;
 
