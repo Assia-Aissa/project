@@ -50,6 +50,7 @@ public class GroupeServiceImpl implements GroupeService {
 
         // Create the response DTO
         GroupeResponseDto responseDto = modelMapper.map(groupe, GroupeResponseDto.class);
+        // Set names of the students in the response DTO
         List<String> etudiantNames = etudiants.stream()
                 .map(e -> e.getNom() + " " + e.getEtprenom())
                 .collect(Collectors.toList());
