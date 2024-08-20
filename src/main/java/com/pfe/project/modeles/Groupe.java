@@ -26,8 +26,12 @@ public class Groupe implements Serializable {
 
 
 
-   @OneToOne
+
+   @OneToOne(mappedBy = "groupe")
    private Projet projet;
+
+   @ManyToMany(mappedBy = "groupes")
+   private List<Encadrant> encadrants;
 
    @ManyToOne
    @JoinColumn(name = "responsable_pfe_id")

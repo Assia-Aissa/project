@@ -17,4 +17,5 @@ public class ProjetResponseDto {
     private String objectif;
     private String date_creation;
 
+    private boolean archiver; // Add this line to handle archiving status
 }

@@ -2,6 +2,7 @@ package com.pfe.project.service;
 
 
 import com.pfe.project.dto.AssignProjectDTO;
+import com.pfe.project.dto.AssignProjectResponseDto;
 import com.pfe.project.dto.ProjetRequestDto;
 import com.pfe.project.dto.ProjetResponseDto;
 
@@ -23,5 +24,11 @@ public interface ProjetService {
     List<ProjetResponseDto> findAll();
 
 
-    void assignProjectToGroup(AssignProjectDTO assignProjectDTO);
+    AssignProjectResponseDto assignProjectToGroup(AssignProjectDTO assignProjectDTO);
+
+    void archiveProject(Integer id);
+
+    void unarchiveProject(Integer id);
+
+    List<ProjetResponseDto> findArchivedProjects();
 }

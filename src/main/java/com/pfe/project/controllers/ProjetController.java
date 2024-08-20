@@ -1,6 +1,7 @@
 package com.pfe.project.controllers;
 
 import com.pfe.project.dto.AssignProjectDTO;
+import com.pfe.project.dto.AssignProjectResponseDto;
 import com.pfe.project.dto.ProjetRequestDto;
 import com.pfe.project.dto.ProjetResponseDto;
 import com.pfe.project.service.ProjetService;
@@ -24,7 +25,7 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000")
 public class ProjetController {
 
-
+    @Autowired
     private ProjetService projetService;
 
     @GetMapping("/projet")
@@ -32,15 +33,22 @@ public class ProjetController {
         return new ResponseEntity<>(projetService.findAll(), HttpStatus.OK);
     }
 
-    @PostMapping("/assign-project")
+   /* @PostMapping("/assign-project")
     public ResponseEntity<String> assignProjectToGroup(@RequestBody AssignProjectDTO assignProjectDTO) {
         projetService.assignProjectToGroup(assignProjectDTO);
         return ResponseEntity.ok("Project assigned to group successfully");
-    }
+    }*/
+   @PostMapping("/assign-project")
+   public ResponseEntity<AssignProjectResponseDto> assignProjectToGroup(@RequestBody AssignProjectDTO assignProjectDTO) {
+       AssignProjectResponseDto response = projetService.assignProjectToGroup(assignProjectDTO);
+       return new ResponseEntity<>(response, HttpStatus.OK);
+   }
 
     @PostMapping("/save")
     public ResponseEntity<ProjetResponseDto> save(@RequestBody @Valid ProjetRequestDto projetRequestDto) {
+        System.out.println("Received request to save project: " + projetRequestDto);
         ProjetResponseDto response = projetService.save(projetRequestDto);
+        System.out.println("Project saved successfully: " + response);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
@@ -60,5 +68,22 @@ public class ProjetController {
     public ResponseEntity<ProjetResponseDto> update(@Valid @RequestBody ProjetRequestDto projetRequestDto, @PathVariable Integer id) throws ChangeSetPersister.NotFoundException {
         ProjetResponseDto projetResponseDto = projetService.update(projetRequestDto, id);
         return ResponseEntity.accepted().body(projetResponseDto);
+    }
+
+    @PostMapping("/archive/{id}")
+    public ResponseEntity<String> archiveProject(@PathVariable Integer id) {
+        projetService.archiveProject(id);
+        return ResponseEntity.ok("Project archived successfully");
+    }
+
+    @PostMapping("/unarchive/{id}")
+    public ResponseEntity<String> unarchiveProject(@PathVariable Integer id) {
+        projetService.unarchiveProject(id);
+        return ResponseEntity.ok("Project unarchived successfully");
+    }
+
+    @GetMapping("/archived")
+    public ResponseEntity<List<ProjetResponseDto>> getArchivedProjects() {
+        return new ResponseEntity<>(projetService.findArchivedProjects(), HttpStatus.OK);
     }
 }

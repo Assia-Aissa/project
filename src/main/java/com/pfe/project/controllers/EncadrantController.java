@@ -1,7 +1,7 @@
 package com.pfe.project.controllers;
 
-import com.pfe.project.dto.EncadrantRequestDto;
-import com.pfe.project.dto.EncadrantResponseDto;
+import com.pfe.project.dto.*;
+import com.pfe.project.modeles.Groupe;
 import com.pfe.project.service.EncadrantService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -47,5 +47,21 @@ public class EncadrantController {
     public ResponseEntity<Void> delete(@PathVariable("id") Integer id) {
         encadrantService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/assign-group")
+    public ResponseEntity<AssignEncadrantResponseDto> assignEncadrantToGroup(@RequestBody AssignEncadrantDto assignEncadrantDto) {
+        AssignEncadrantResponseDto response = encadrantService.assignEncadrantToGroup(assignEncadrantDto);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/available-groups")
+    public ResponseEntity<?> getGroupsWithoutEncadrant() {
+        List<Groupe> groups = encadrantService.findGroupsWithoutEncadrant();
+        if (groups.isEmpty()) {
+            return new ResponseEntity<>("No groups available for assignment", HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(groups, HttpStatus.OK);
     }
 }

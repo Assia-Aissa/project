@@ -13,7 +13,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
-
+import com.pfe.project.dto.AssignProjectResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
@@ -40,17 +40,27 @@ public class ProjetServiceImpl implements ProjetService{
     @Autowired
     private GroupeDao groupeDao;
 
-    public void assignProjectToGroup(AssignProjectDTO assignProjectDTO) {
+
+    public AssignProjectResponseDto assignProjectToGroup(AssignProjectDTO assignProjectDTO) {
         // Retrieve the group and project from the database
-        Groupe group = groupeDao.findById(assignProjectDTO.getGroupId()).orElseThrow(() -> new EntityNotFoundException("Group not found"));
-        Projet project = projetDao.findById(assignProjectDTO.getProjectId()).orElseThrow(() -> new EntityNotFoundException("Project not found"));
+        Groupe group = groupeDao.findById(assignProjectDTO.getGroupId())
+                .orElseThrow(() -> new EntityNotFoundException("Group not found"));
+        Projet project = projetDao.findById(assignProjectDTO.getProjectId())
+                .orElseThrow(() -> new EntityNotFoundException("Project not found"));
 
         // Assign the project to the group
-        group.setProject(project);
+        group.setProjet(project);
         groupeDao.save(group);
+
+        // Prepare the response DTO
+        return new AssignProjectResponseDto(
+                project.getId(),
+                project.getTitre(),
+                project.getDate_creation(),
+                group.getId(),
+                group.getNom() // Adjust this field if necessary
+        );
     }
-
-
     /*  @Override
       public ProjetResponseDto save(ProjetRequestDto projetRequestDto) {
           Projet projet = modelMapper.map(projetRequestDto, Projet.class);
@@ -115,6 +125,27 @@ public class ProjetServiceImpl implements ProjetService{
                 .stream().map(element -> modelMapper.map(element, ProjetResponseDto.class))
                 .collect(Collectors.toList());
 
+    }
+
+
+    @Override
+    public void archiveProject(Integer id) {
+        Projet projet = projetDao.findById(id).orElseThrow(() -> new EntityNotFoundException("Project not found"));
+        projet.setArchiver(true);
+        projetDao.save(projet);
+    }
+
+    @Override
+    public void unarchiveProject(Integer id) {
+        Projet projet = projetDao.findById(id).orElseThrow(() -> new EntityNotFoundException("Project not found"));
+        projet.setArchiver(false);
+        projetDao.save(projet);
+    }
+    @Override
+    public List<ProjetResponseDto> findArchivedProjects() {
+        return projetDao.findByArchiver(true)
+                .stream().map(element -> modelMapper.map(element, ProjetResponseDto.class))
+                .collect(Collectors.toList());
     }
 }
 

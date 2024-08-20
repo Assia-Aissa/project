@@ -23,6 +23,7 @@ public class ProjetRequestDto {
     @NotNull(message = "La date de création est obligatoire")
     private String date_creation;
 
+    private boolean archiver; // Add this line to handle archiving status
 
     /*@NotNull
      private List<Integer> etudiantIds;*/

@@ -23,10 +23,16 @@ public class Encadrant extends Professeur implements Serializable {
 
    private boolean archive;
 
+    @ManyToMany
+    @JoinTable(
+            name = "groupe_encadrant",
+            joinColumns = @JoinColumn(name = "encadrant_id"),
+            inverseJoinColumns = @JoinColumn(name = "groupe_id")
+    )
+    private List<Groupe> groupes;
 
 
-
-   @OneToMany(mappedBy = "encadrant",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "encadrant",cascade = CascadeType.ALL)
    private List<Projet> projets;
 
 
