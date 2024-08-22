@@ -10,19 +10,18 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-public interface UserDao extends JpaRepository<User, Long> {
+public interface UserDao extends JpaRepository<User, Integer> {
     @Query("SELECT u FROM User u WHERE u.email = :email")
     User findByEmail(String email);
 
     List<User> findByRole(Role role);
 
 
-
-
-
-
-
-
+    @Transactional
+    @Modifying
+    @Query("update User u set u.password = ?2 where u.email = ?1")
+    void updatePassword(String email, String encodedPassword);
 }

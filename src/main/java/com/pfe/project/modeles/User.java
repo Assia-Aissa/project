@@ -40,6 +40,8 @@ public class User implements UserDetails {
     private Role role ;  // Default role can be set as needed
     private String telephone;
 
+    @OneToOne(mappedBy = "user")
+    private ForgotPassword forgotPassword;
 
 
     @Override
@@ -76,6 +78,7 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 
 
 }

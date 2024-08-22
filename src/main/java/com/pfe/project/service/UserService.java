@@ -23,5 +23,4 @@ public interface UserService {
     List<User> findByRole(Role role);
 
 
-
 }

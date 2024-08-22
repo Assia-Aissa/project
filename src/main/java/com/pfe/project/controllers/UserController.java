@@ -22,6 +22,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.Optional;
 
 @Data
@@ -33,8 +34,9 @@ public class UserController {
 
     @Autowired
     private UserDao userDao;
-
+    @Autowired
     private UserService userService;
+
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -111,6 +113,8 @@ public class UserController {
 
         return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
     }
+
+
 
 
 
