@@ -21,7 +21,7 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Encadrant extends Professeur implements Serializable {
 
-   private boolean archive;
+    private boolean archive;
 
     @ManyToMany
     @JoinTable(
@@ -33,12 +33,12 @@ public class Encadrant extends Professeur implements Serializable {
 
 
     @OneToMany(mappedBy = "encadrant",cascade = CascadeType.ALL)
-   private List<Projet> projets;
+    private List<Projet> projets;
 
 
-   public void setIdentifier(Integer identifier) {
+    public void setIdentifier(Integer identifier) {
 
-   }
+    }
 
     public void setId(Integer id) {
 

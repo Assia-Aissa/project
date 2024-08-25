@@ -20,7 +20,7 @@ public class ResponsablePFE extends Encadrant implements Serializable {
    @Column(nullable = false)
    private boolean responsable;
 
-   
+
    @OneToMany(mappedBy = "responsablePFE", cascade = CascadeType.ALL)
    private List<Groupe> groupes;
 

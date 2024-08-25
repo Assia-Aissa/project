@@ -32,7 +32,7 @@ public class EncadrantController {
     }
 
     @GetMapping("/id/{id}")
-    public ResponseEntity<EncadrantResponseDto> findById(@PathVariable("id") Integer id) {
+    public ResponseEntity<EncadrantResponseDto> findById(@PathVariable("id")  Integer id) {
         EncadrantResponseDto encadrantResponseDto = encadrantService.findById(id);
         return ResponseEntity.ok(encadrantResponseDto);
     }

@@ -1,20 +1,12 @@
 package com.pfe.project.modeles;
-
-
-
-
 import jakarta.persistence.*;
-
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
@@ -40,8 +32,13 @@ public class User implements UserDetails {
     private Role role ;  // Default role can be set as needed
     private String telephone;
 
+    private String token;
+    @Column(columnDefinition = "TIMESTAMP")
+    private LocalDateTime tokenCreationDate;
     @OneToOne(mappedBy = "user")
     private ForgotPassword forgotPassword;
+
+
 
 
     @Override

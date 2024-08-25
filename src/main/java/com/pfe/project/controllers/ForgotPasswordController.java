@@ -39,7 +39,7 @@ public class ForgotPasswordController {
 
 
         // send mail for email verification
-        @PostMapping("/verifyMail/{email}")
+        @PostMapping("/verifyMail")
         public ResponseEntity<String> verifyEmail(@PathVariable String email) {
             User user = userRepository.findByEmail(email);
             if(user == null){
@@ -66,7 +66,7 @@ public class ForgotPasswordController {
             return ResponseEntity.ok("Email sent for verification!");
         }
 
-        @PostMapping("/verifyOtp/{otp}/{email}")
+        @PostMapping("/verifyOtp")
         public ResponseEntity<String> verifyOtp(@PathVariable Integer otp, @PathVariable String email) {
             User user = userRepository.findByEmail(email);
             if(user == null){
@@ -86,7 +86,7 @@ public class ForgotPasswordController {
         }
 
 
-        @PostMapping("/changePassword/{email}")
+        @PostMapping("/changePassword")
         public ResponseEntity<String> changePasswordHandler(@RequestBody ChangePassword changePassword,
                                                             @PathVariable String email) {
             if (!Objects.equals(changePassword.password(), changePassword.repeatPassword())) {
