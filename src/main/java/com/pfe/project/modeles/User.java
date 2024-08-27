@@ -16,6 +16,7 @@ import java.util.List;
 @Data
 @Table(name = "user")
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 
 public class User implements UserDetails {
 
@@ -29,7 +30,7 @@ public class User implements UserDetails {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     @Enumerated(EnumType.STRING)
-    private Role role ;  // Default role can be set as needed
+    private Role role ;
     private String telephone;
 
     private String token;

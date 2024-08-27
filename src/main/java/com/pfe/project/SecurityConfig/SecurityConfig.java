@@ -26,14 +26,6 @@ public class SecurityConfig implements WebMvcConfigurer {
     public SecurityConfig(UserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOrigins("http://localhost:3000")
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                .allowedHeaders("*");
-        System.out.println("CORS mappings added");
-    }
 
 
     @Bean
@@ -41,7 +33,7 @@ public class SecurityConfig implements WebMvcConfigurer {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/signin","/auth/signup", "/forgot-password", "/reset-password  ").permitAll()
+                        .requestMatchers("/forgot-password","/reset-password","/auth/**").permitAll()
                         .anyRequest()
                         .authenticated())
                 .sessionManagement(session -> session

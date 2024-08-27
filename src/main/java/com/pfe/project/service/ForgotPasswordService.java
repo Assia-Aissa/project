@@ -3,6 +3,9 @@ package com.pfe.project.service;
 
 import com.pfe.project.dao.ForgotPasswordRepo;
 import com.pfe.project.modeles.User;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +13,9 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
-
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Service
 public class ForgotPasswordService {
     private static final long EXPIRE_TOKEN=30;

@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
@@ -34,16 +33,17 @@ public class UserServiceImplementation implements UserDetailsService, UserServic
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userDao.findByEmail(username);
+        System.out.println("------>"+user);
         if (user == null) {
             throw new UsernameNotFoundException("User not found with this email: " + username);
         }
+        System.out.println("Loaded user: " + user.getEmail() + ", Role: " + user.getRole());
         List<GrantedAuthority> authorities = new ArrayList<>();
         // Add roles and other authorities here if needed
         return new org.springframework.security.core.userdetails.User(
                 user.getEmail(),
                 user.getPassword(),
-                authorities
-        );
+                authorities);
     }
 
 
